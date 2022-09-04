@@ -114,6 +114,6 @@
 
 ## Developer Message 
 <br>
- Thanks for Reading upto here. This App is in Beta State so it will be updated in future. If any-one want to give a feedback just drop a mail to : shubhammaurya996633@gmail.com . 
+ Thanks for Reading upto here. This App is in Beta State so it will be updated in future. If any-one want to give a feedback just drop a mail to : <a href ="mailto:shubhammaurya996633@gmail.com"> <br><i><b>Here :)</i></b> </a>
  
- ### Have A Nice Day :) :) :)
+ ### <i><b>Have A Nice Day :) :) :)</i></b>
