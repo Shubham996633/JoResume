@@ -8,7 +8,7 @@
  ![image](https://user-images.githubusercontent.com/65014926/188300526-3df6adfe-ece0-4846-ba6d-0ba15e72387b.png)
 
 
-
+<br>
 
 ## To Visit the APP Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume APP</a> 
 
