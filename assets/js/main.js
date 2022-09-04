@@ -735,7 +735,7 @@ function resizeFn() {
             icon: 'error',
             title: 'Oops...',
             text: 'Your Screen Size must be greator than 810px for editing',
-            footer: 'Screen size below than 810px Allowed to see what we made finnaly'
+            footer: 'Screen size below than 810px Allowed to see what we made finally'
           })
 
 
