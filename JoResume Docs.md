@@ -7,6 +7,11 @@
  <br>
  
  ![image](https://user-images.githubusercontent.com/65014926/188300526-3df6adfe-ece0-4846-ba6d-0ba15e72387b.png)
+ 
+ 
+<br>
+
+## To Visit the APP Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume APP</a> 
 
 <br>
 
@@ -60,7 +65,8 @@
 
 <br>
 
- <b>--> If You want to add more option just click on ADD More Button. <i><b>This app has a bug that will be sorted after some-time</b></i>, the bug is if you click ADD More After the filled of the Field It Will Just Replicate that one so you had to delete then add your value you want or Add More options before Inserting your Data As much you want.</b>
+ <b>--> If You want to add more option just click on ADD More Button. <i><b>This app has a bug that will be sorted after some-time</b></i>, 
+ <br>The bug is if you click ADD More After the filled of the Field It Will Just Replicate that one so you had to delete then add your value you want or Add More options before Inserting your Data As much you want.</b>
  
  <br>
 
@@ -118,4 +124,38 @@
 ## 9) The End Result
 
 ![image](https://user-images.githubusercontent.com/65014926/188302248-bc033a0d-f2d2-43f8-abb7-df8a9d9485bf.png)
+
+<br>
+ 
+### Note : The App Is not ready to use for small devices , It will Show as just template of a resume for devices with Smaller width of 810px
+ 
+ 
+# --> Preview For Devices of width <b><i> 810px </i></b>
+
+### --> Firstly You will show a Error 
+<br>
+
+![image](https://user-images.githubusercontent.com/65014926/188302591-158f88b4-6503-4532-bdd9-31c68e1c9220.png)
+<br>
+<br>
+
+### Note : Then the template of A Resume will Appera with a <i><b>Download Butto</i></b>, which download a Demo PDF How The App Can Create in <i><b>Devices Larger Width of 810px</i></b>
+<br>
+
+![image](https://user-images.githubusercontent.com/65014926/188302685-91f741da-500c-43ba-9886-3afbb4947970.png)
+<br>
+<br>
+
+<br>
+
+## To Visit the APP Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume APP</a> 
+
+<br>
+
+## Developer Message 
+<br>
+ Thanks for Reading upto here. This App is in Beta State so it will be updated in future. If any-one want to give a feedback just drop a 
+ Mail to : <a href ="mailto:shubhammaurya996633@gmail.com"> <br><i><b> Shubham Maurya :)</i></b> </a>
+ 
+ ### <i><b>Have A Nice Day & Keeps Smiling It Suits You :) :) :)</i></b>
 
