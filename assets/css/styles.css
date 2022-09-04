@@ -1445,3 +1445,6 @@ button{
 .docs{
     margin-left: 3rem;
 }
+body{
+    overflow-x: hidden;
+}
