@@ -10,7 +10,12 @@
 
 
 
-## To Visit Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume</a> 
+## To Visit the APP Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume APP</a> 
+
+<br>
+
+## To Visit the Docs Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume DOCS</a> 
+
 
 
 <br><br><br>
