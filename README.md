@@ -9,3 +9,14 @@
 
 
 ## To Visit Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume</a> 
+
+## Complete Overview of Website
+
+### --> First Looks
+
+![image](https://user-images.githubusercontent.com/65014926/188300746-32b7a2f8-c8f6-4715-9808-621d8f889d04.png)
+
+### --> App Preview
+
+
+![Web capture_4-9-2022_1275_127 0 0 1](https://user-images.githubusercontent.com/65014926/188300857-1612fb24-17e4-4f56-bb9f-e7d000b62b08.jpeg)
