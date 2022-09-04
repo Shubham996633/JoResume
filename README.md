@@ -84,3 +84,28 @@
 
 ![Web capture_4-9-2022_125331_127 0 0 1](https://user-images.githubusercontent.com/65014926/188302361-ad2f6e71-3aea-4501-bddf-93ecc36b977c.jpeg)
 
+
+<br>
+<br><br>
+
+## Note : The App Is not ready to use for small devices , It will Show as just template of a resume for devices with Smaller width of <b><i> 810px </i></b>
+
+
+# --> Preview For Devices of width <b><i> 810px </i></b>
+
+### --> Firstly You will show a Error 
+<br>
+
+![image](https://user-images.githubusercontent.com/65014926/188302591-158f88b4-6503-4532-bdd9-31c68e1c9220.png)
+<br>
+<br>
+
+### Note : Then the template of A Resume will Appera with a <i><b>Download Butto</i></b>, which download a Demo PDF How The App Can Create in <i><b>Devices Larger Width of 810px</i></b>
+<br>
+
+![image](https://user-images.githubusercontent.com/65014926/188302685-91f741da-500c-43ba-9886-3afbb4947970.png)
+<br>
+<br>
+
+
+### Thanks for Reading upto here. This App is in Beta State so it will be updated in future. If any-one want to give a feedback just drop a mail to : shubhammaurya996633@gmail.com
