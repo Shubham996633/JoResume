@@ -15,7 +15,7 @@
 
 <br>
 
-## To Visit the Docs Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume DOCS</a> 
+## To Visit the Docs Click Here : <a href = "https://github.com/Shubham996633/JoResume__Responsive__Resume__App/blob/main/JoResume%20Docs.md">JoResume DOCS</a> 
 
 
 
