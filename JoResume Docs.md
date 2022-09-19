@@ -155,7 +155,7 @@
 ## Developer Message 
 <br>
  Thanks for Reading upto here. This App is in Beta State so it will be updated in future. If any-one want to give a feedback just drop a 
- Mail to : <a href ="mailto:shubhammaurya996633@gmail.com"> <br><i><b> Shubham Maurya :)</i></b> </a>
+ Mail to : <a href ="mailto:shubhammaurya996633+work@gmail.com"> <br><i><b> Shubham Maurya :)</i></b> </a>
  
  ### <i><b>Have A Nice Day & Keeps Smiling It Suits You :) :) :)</i></b>
 
