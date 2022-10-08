@@ -37,8 +37,7 @@
 
 <br>
 
-![Web capture_4-9-2022_1275_127 0 0 1](https://user-images.githubusercontent.com/65014926/188300857-1612fb24-17e4-4f56-bb9f-e7d000b62b08.jpeg)
-
+![image](https://user-images.githubusercontent.com/65014926/194699028-5f04fbd4-8d07-46cc-81d9-a272f80d2eb4.png)
 <br>
 <br>
 
