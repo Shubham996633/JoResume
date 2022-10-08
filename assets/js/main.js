@@ -614,10 +614,11 @@ function updater(){
 
 }   
 
-var i = 1;
 var original = document.querySelector('.education__content-creator');
 
+var i = 1;
 function duplicate() {
+
     var clone = original.cloneNode(true); // "deep" clone
      // there can only be one element with an ID
 
@@ -679,61 +680,294 @@ function deleteEducation(){
 
 var original_experience = document.querySelector('.experience__content-creator');
 
+var j = 1;
 function duplicate_experience() {
+
     var clone = original_experience.cloneNode(true); // "deep" clone
-    clone.id = "experience__content" + ++i; // there can only be one element with an ID
+    clone.id = "new__experience";
+     // there can only be one element with an ID
+    clone.className = `new__experience${j}`
     original_experience.parentNode.appendChild(clone);
+    j++;
+
+    document.querySelector('.delete__experience').onclick = () => {
+        j -= 1
+        if(j === 0){
+            j = 1
+        }
+    }
+    changeExperience()
+
+}
+
+
+function changeExperience(){
+    const totalExperience = document.querySelectorAll('#new__experience')
+
+    if(totalExperience.length === 0){
+
+        document.querySelector('.delete__experience').disabled = true
+
+    }else if(totalExperience.length > 0){
+        document.querySelector('.delete__experience').disabled = false
+
+        const inputExperienceContainer = document.querySelector(`.new__experience${totalExperience.length}`)
+
+        let experienceTitle = inputExperienceContainer.querySelector('.experience__title-creator')
+        experienceTitle.value = ""
+
+        let experienceCompany = inputExperienceContainer.querySelector('.experience__company-creator-time')
+        experienceCompany.value = ""
+
+        let experienceDescp = inputExperienceContainer.querySelector('.experience__description-creator')
+        experienceDescp.value = ""
+
+    }
+}
+
+
+document.querySelector('.delete__experience').addEventListener('click', deleteExperience)
+function deleteExperience(){
+    const totalExperience = document.querySelectorAll('#new__experience')
+     if(totalExperience.length === 0){
+         document.querySelector('.delete__experience').disabled = true
+     }else if(totalExperience.length > 0){
+         document.querySelector('.delete__experience').disabled = false
+         let deleteItem = document.querySelector(`.new__experience${totalExperience.length}`)
+         deleteItem.parentNode.removeChild(deleteItem)
+}
 }
 
 
 var original_certificate = document.querySelector('.certificate__content-creator');
-
+var n = 1
 function duplicate_certificate() {
     var clone = original_certificate.cloneNode(true); // "deep" clone
-    clone.id = "certificate__content" + ++i; // there can only be one element with an ID
+    clone.id = "new__certificate" ; // there can only be one element with an ID
+    clone.className = `new__certificate${n}`
     original_certificate.parentNode.appendChild(clone);
+    n++;
+
+    document.querySelector('.delete__certificate').onclick = () => {
+        n -= 1
+        if(n === 0){
+            n = 1
+        }
+    }
+    changeCertificate()
 }
 
+function changeCertificate(){
+
+    const totalCertificate = document.querySelectorAll('#new__certificate')
+
+    if(totalCertificate.length === 0){
+        document.querySelector('.delete__certificate').disabled = true
+    }else if(totalCertificate.length > 0){
+        document.querySelector('.delete__certificate').disabled = false
+        const inputCertificateContainer = document.querySelector(`.new__certificate${totalCertificate.length}`)
+
+        let certifiTitle = inputCertificateContainer.querySelector('.certificate__title-creator')
+        certifiTitle.value = ""
+
+        let certiflink = inputCertificateContainer.querySelector('.certificate-link-creator')
+        certiflink.value = ""
+
+        let certifidescp = inputCertificateContainer.querySelector('.certificate__description-creator')
+        certifidescp.value = ""
+    }
+
+}
+
+
+document.querySelector('.delete__certificate').addEventListener('click', deletecertificate)
+
+function deletecertificate(){
+    const totalCertificate = document.querySelectorAll('#new__certificate')
+     if(totalCertificate.length === 0){
+         document.querySelector('.delete__certificate').disabled = true
+     }else if(totalCertificate.length > 0){
+         document.querySelector('.delete__certificate').disabled = false
+         let deleteItem = document.querySelector(`.new__certificate${totalCertificate.length}`)
+         deleteItem.parentNode.removeChild(deleteItem)
+}
+}
+
+var x = 1
 var original_references = document.querySelector('.references__content-creator');
 
 function duplicate_references() {
     var clone = original_references.cloneNode(true); // "deep" clone
-    clone.id = "references__content" + ++i; // there can only be one element with an ID
+    clone.id = "new__references"; // there can only be one element with an ID
+    clone.className = `new__references${x}`
     original_references.parentNode.appendChild(clone);
+    x++;
+
+    document.querySelector('.delete__refrences').onclick = () => {
+        x -= 1
+        if(x === 0){
+            x = 1
+        }
+    }
+    changeRefernces()
+}
+
+function changeRefernces(){
+    const totalReferences = document.querySelectorAll('#new__references')
+
+    if(totalReferences.length === 0){
+        document.querySelector('.delete__refrences').disabled = true
+
+    }else if(totalReferences.length > 0){
+        document.querySelector('.delete__refrences').disabled = false
+
+        const inputReferenceContainer = document.querySelector(`.new__references${totalReferences.length}`)
+        
+        let refrenceTitle = inputReferenceContainer.querySelector('.references__post-creator')
+        refrenceTitle.value = ""
+
+        let referncePost = inputReferenceContainer.querySelector('.references__title-creator')
+        referncePost.value = ""
+
+        let refenceNumber = inputReferenceContainer.querySelector('.references__number-creator')
+        refenceNumber.value = ""
+
+        let refrenceEmail = inputReferenceContainer.querySelector('.references__email-creator')
+        refrenceEmail.value = ""
+    }
 }
 
 
-var original_languages = document.querySelector('.languages__name-creator');
+document.querySelector('.delete__refrences').addEventListener('click', deleterefrence)
 
+
+function deleterefrence(){
+    const totalReferences = document.querySelectorAll('#new__references')
+     if(totalReferences.length === 0){
+         document.querySelector('.delete__refrences').disabled = true
+     }else if(totalReferences.length > 0){
+         document.querySelector('.delete__refrences').disabled = false
+         let deleteItem = document.querySelector(`.new__references${totalReferences.length}`)
+         deleteItem.parentNode.removeChild(deleteItem)
+}
+
+}
+
+
+
+var original_languages = document.querySelector('.languages__name-creator');
+var b = 1
 function duplicate_languages() {
     var clone = original_languages.cloneNode(true); // "deep" clone
-    clone.id = "languages__name" + ++i; // there can only be one element with an ID
+    clone.id = "new__language"; // there can only be one element with an ID
+    clone.className = `new__language${b}`
     original_languages.parentNode.appendChild(clone);
+    b++;
+    document.querySelector('.delete__languages').onclick = () => {
+        b -= 1
+        if(b === 0){
+            b = 1
+        }
+    }
+    changeLanguage()
+}
+
+function changeLanguage(){
+    const totalLanguages = document.querySelectorAll('#new__language')
+
+    if(totalLanguages.length === 0){
+        document.querySelector('.delete__languages').disabled = true
+    }else if(totalLanguages.length > 0){
+        document.querySelector('.delete__languages').disabled = false
+        
+        const inputLanguages = document.querySelector(`.new__language${totalLanguages.length}`)
+
+        let languagaName = inputLanguages.querySelector('.languages__creator')
+        languagaName.value = ""
+    }
+
+
+}
+
+document.querySelector('.delete__languages').addEventListener('click', deleteLanguage)
+
+
+function deleteLanguage(){
+    const totalLanguages = document.querySelectorAll('#new__language')
+     if(totalLanguages.length === 0){
+         document.querySelector('.delete__languages').disabled = true
+     }else if(totalLanguages.length > 0){
+         document.querySelector('.delete__languages').disabled = false
+         let deleteItem = document.querySelector(`.new__language${totalLanguages.length}`)
+         deleteItem.parentNode.removeChild(deleteItem)
+}
+
 }
 
 
 var original_interest = document.querySelector('.interesets__content-creator');
-
+var r = 1
 function duplicate_interest() {
     var clone = original_interest.cloneNode(true); // "deep" clone
-    clone.id = "interesets__content" + ++i; // there can only be one element with an ID
+    clone.id = "new__intrest"; // there can only be one element with an ID
+    clone.className = `new__intrest${r}`
+    
     original_interest.parentNode.appendChild(clone);
+    r++;
+
+    document.querySelector('.deleteIntrest').onclick = () => {
+        r -= 1
+        if(r === 0){
+            r = 1
+        }
+    }
+    changeIntrest()
 }
 
+function changeIntrest() {
+    const totalIntrest = document.querySelectorAll('#new__intrest')
 
+    if(totalIntrest.length === 0){
+        document.querySelector('.deleteIntrest').disabled = true
+    }else if(totalIntrest.length > 0){
+        document.querySelector('.deleteIntrest').disabled = false
+
+        const inputIntrestContainer = document.querySelector(`.new__intrest${totalIntrest.length}`)
+
+        let intrestName = inputIntrestContainer.querySelector('.interest__name-creator')
+        intrestName.value = ""
+    }
+}
+
+document.querySelector('.deleteIntrest').addEventListener('click', deleteIntrest)
+
+
+function deleteIntrest(){
+    const totalIntrest = document.querySelectorAll('#new__intrest')
+     if(totalIntrest.length === 0){
+         document.querySelector('.deleteIntrest').disabled = true
+     }else if(totalIntrest.length > 0){
+         document.querySelector('.deleteIntrest').disabled = false
+         let deleteItem = document.querySelector(`.new__intrest${totalIntrest.length}`)
+         deleteItem.parentNode.removeChild(deleteItem)
+}
+
+}
+
+var k = 1;
 
 var original_skills = document.querySelector('.skills__name-creator');
 
 function duplicate_skills() {
     var clone = original_skills.cloneNode(true); // "deep" clone
     clone.id = "new__skills"; // there can only be one element with an ID
-    clone.className = `new__skills${i}` 
-    i++
+    clone.className = `new__skills${k}` 
+    k++
     original_skills.parentNode.appendChild(clone);
     document.querySelector('.delete__skills').onclick = () => {
-        i -= 1
-        if(i === 0){
-            i = 1
+        k -= 1
+        if(k === 0){
+            k = 1
         }
     }
     changeSkills()
@@ -762,8 +996,8 @@ function deleteSkills(){
          document.querySelector('.delete__skills').disabled = true
      }else if(totalSkills.length > 0){
          document.querySelector('.delete__skills').disabled = false
-         let deleteItem = document.querySelector(`.new__skills${totalSkills.length}`)
-         deleteItem.parentNode.removeChild(deleteItem)
+         let deleteItemskills = document.querySelector(`.new__skills${totalSkills.length}`)
+         deleteItemskills.parentNode.removeChild(deleteItemskills)
 }
 
 }

@@ -1473,7 +1473,8 @@ textarea{
 body{
     overflow-x: hidden;
 }
-#new__education
+#new__education,
+#new__experience
 {
     display: flex;
 }
