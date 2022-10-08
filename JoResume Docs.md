@@ -65,8 +65,7 @@
 
 <br>
 
- <b>--> If You want to add more option just click on ADD More Button. <i><b>This app has a bug that will be sorted after some-time</b></i>, 
- <br>The bug is if you click ADD More After the filled of the Field It Will Just Replicate that one so you had to delete then add your value you want or Add More options before Inserting your Data As much you want.</b>
+
  
  <br>
 
@@ -83,7 +82,16 @@
 
 <br>
 
-## 6) Genrating PDF
+## 6) Have A Delete Last Button (updated)
+
+<br>
+
+![image](https://user-images.githubusercontent.com/65014926/194698946-ddd7192d-caa7-4007-8c3e-45d5ee5d8ddd.png)
+
+
+### --> When the user click on Delete Last Button The Last item will get Deleted From the page 
+
+## 7) Genrating PDF
 
 <br>
 
@@ -95,7 +103,7 @@
 
 <br>
 
-## 7 ) The Back And Download Button
+## 8 ) The Back And Download Button
 
 <br>
 
@@ -107,7 +115,7 @@
 
 <br>
 
-## 8) Day/Night Mode
+## 9) Day/Night Mode
 
 <br>
 
@@ -121,7 +129,7 @@
 
 <br>
 
-## 9) The End Result
+## 10) The End Result
 
 ![image](https://user-images.githubusercontent.com/65014926/188302248-bc033a0d-f2d2-43f8-abb7-df8a9d9485bf.png)
 
