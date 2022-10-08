@@ -1,6 +1,6 @@
             /* Google Fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
             /* Variable CSS */
 
@@ -572,7 +572,8 @@ img{
 }
 
 .skills__name,
-.languages__name{
+.languages__name,
+#new__skills{
     display: flex;
     align-items: center;
     margin-bottom: var(--mb-3);
@@ -736,6 +737,10 @@ input{
     margin-left: var(--mb-3);
     margin-top: var(--mb-3);
 }
+.delete:hover{
+    background-color: inherit;
+    color: inherit;
+}
 
 a{
     color: var(--text-color);
@@ -744,12 +749,44 @@ a{
 .education__rounder-last{
     margin-top: 2rem;
 }
-.addmore{
+.addmore,
+.delete{
     height: 50px;
     width: 90px;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
 }
+.delete{
+    width: 120px;
+    margin-left: .5rem;
+}
+button,i{
+    transition: .3s;
+}
+
+button:active{
+    transform: scale(.9);
+}
+
+.theme-switcher:active,
+.ri-refresh-fill:active,
+.editing-pdf:active,
+.bx-download:active,
+.change-theme:active{
+    transform: scale(.81);
+
+
+}
+
+.theme-switcher,
+.ri-refresh-fill,
+.editing-pdf,
+.bx-download,
+.change-theme{
+    font-size: 2.19rem;
+
+}
+
 
 .education__rounder-last-result
 {
@@ -1408,21 +1445,9 @@ button{
     
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+textarea{
+    resize: none;
+}
 .load{
     position: fixed;
     top: 0;
@@ -1447,4 +1472,8 @@ button{
 }
 body{
     overflow-x: hidden;
+}
+#new__education
+{
+    display: flex;
 }

@@ -614,13 +614,66 @@ function updater(){
 
 }   
 
-var i = 0;
+var i = 1;
 var original = document.querySelector('.education__content-creator');
 
 function duplicate() {
     var clone = original.cloneNode(true); // "deep" clone
-    clone.id = "education__content-creator" + ++i; // there can only be one element with an ID
+     // there can only be one element with an ID
+
+    clone.id = "new__education"; // there can only be one element with an ID
+
+    clone.className = `new__education${i}` 
+
     original.parentNode.appendChild(clone);
+    i++;
+
+    document.querySelector('.delete__education').onclick = () => {
+        i -= 1
+        if(i === 0){
+            i = 1
+        }
+    }
+    changeEducation()
+}
+
+
+function changeEducation(){
+
+    const totalEducation = document.querySelectorAll('#new__education')
+
+    if(totalEducation.length === 0){
+
+        document.querySelector('.delete__education').disabled = true
+        
+    }else if(totalEducation.length > 0){
+
+        document.querySelector('.delete__education').disabled = false
+        const inputEducationContainer = document.querySelector(`.new__education${totalEducation.length}`)
+
+        let eductationTitle = inputEducationContainer.querySelector('.education__title-creator')
+        eductationTitle.value = ""
+        
+        let eductaionInstitute = inputEducationContainer.querySelector('.education__studies-creator')
+        eductaionInstitute.value = ""
+
+        let educationYear = inputEducationContainer.querySelector('.education__year-creator')
+        educationYear.value = ""
+    }
+}
+document.querySelector('.delete__education').addEventListener('click', deleteEducation)
+
+
+function deleteEducation(){
+    const totalEducation = document.querySelectorAll('#new__education')
+     if(totalEducation.length === 0){
+         document.querySelector('.delete__education').disabled = true
+     }else if(totalEducation.length > 0){
+         document.querySelector('.delete__education').disabled = false
+         let deleteItem = document.querySelector(`.new__education${totalEducation.length}`)
+         deleteItem.parentNode.removeChild(deleteItem)
+}
+
 }
 
 
@@ -673,13 +726,47 @@ var original_skills = document.querySelector('.skills__name-creator');
 
 function duplicate_skills() {
     var clone = original_skills.cloneNode(true); // "deep" clone
-    clone.id = "skills__content" + ++i; // there can only be one element with an ID
+    clone.id = "new__skills"; // there can only be one element with an ID
+    clone.className = `new__skills${i}` 
+    i++
     original_skills.parentNode.appendChild(clone);
+    document.querySelector('.delete__skills').onclick = () => {
+        i -= 1
+        if(i === 0){
+            i = 1
+        }
+    }
+    changeSkills()
 }
 
+function changeSkills(){
+    const totalSkills = document.querySelectorAll('#new__skills')
 
+    if(totalSkills.length === 0){
+        document.querySelector('.delete__skills').disabled = true
+    }else if(totalSkills.length > 0){
 
+        document.querySelector('.delete__skills').disabled = false
 
+        const inputSkillContainer = document.querySelector(`.new__skills${totalSkills.length}`)
+        
+        let skillsTitle = inputSkillContainer.querySelector('.skills__creator')
+        skillsTitle.value = ""
+    }
+}
+
+document.querySelector('.delete__skills').addEventListener('click', deleteSkills)
+function deleteSkills(){
+    const totalSkills = document.querySelectorAll('#new__skills')
+     if(totalSkills.length === 0){
+         document.querySelector('.delete__skills').disabled = true
+     }else if(totalSkills.length > 0){
+         document.querySelector('.delete__skills').disabled = false
+         let deleteItem = document.querySelector(`.new__skills${totalSkills.length}`)
+         deleteItem.parentNode.removeChild(deleteItem)
+}
+
+}
 /*==================== DARK LIGHT THEME ====================*/ 
 const themeswitchButton = document.getElementById('theme-switcher')
 const darkswitchTheme = 'dark-theme'
@@ -746,4 +833,3 @@ function happy(){
         
       })
   }
-  
