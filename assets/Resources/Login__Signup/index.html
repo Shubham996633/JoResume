@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoResume Login/Signup</title>
+
+                    <!-- Favicons -->
+
+    <link rel="shortcut icon" href="assets/img/img-login.svg" >
+
+                    <!-- Boxicons -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+
+
+                     <!-- CSS -->
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+
+</head>
+
+<body>
+
+    <div class="login">
+        <div class="login__content">
+            <div class="login__img">
+                <img src="assets/img/img-login.svg" alt="login/signup-image">
+            </div>
+
+            <div class="login__forms">
+                <form action="" class="login__register none signin" id="login-in">
+                    <h1 class="login__title">
+                        Sign In
+                    </h1>
+
+                    <div class="login__box">
+                        <i class='bx bxs-user login__icon'></i>
+
+                        <input type="email" placeholder="Email" class="login__input" id="loginEmail" required>
+
+                    </div>
+
+                    <div class="login__box">
+                        <i class='bx bxs-lock login__icon'></i>
+
+                        <input type="password" placeholder="Password" class="login__input" id="loginPassword" required minlength="6">
+
+                    </div>
+
+                    <button type="submit" class="login__button">Sign In</button>
+
+                    <div>
+                        <span class="login__account">Don't have an Account ? </span>
+                        <span class="login__signin" id ="sign-up">Sign Up</span>
+                    </div>
+                </form>
+
+
+
+
+                <form autocomplete="off" class="login__create signup" id="login-up">
+                    <h1 class="login__title">
+                        Create Account
+                    </h1>
+
+
+                    <div class="login__box">
+                        <i class='bx bxs-user login__icon'></i>
+
+                        <input type="text" placeholder="Name" class="login__input signupName" id="name" required>
+
+                    </div>
+
+                    <div class="login__box">
+                        <i class='bx bx-at login__icon'></i>
+
+                        <input type="text" placeholder="Email" class="login__input signupEmail" id="email" required>
+
+                    </div>
+
+                    <div class="login__box">
+                        <i class='bx bxs-lock login__icon'></i>
+
+                        <input type="password" placeholder="Password" class="login__input signupEmail" id="password" required minlength="6">
+
+                    </div>
+
+                    <button type="submit" class="login__button signupButton">Sign Up</button>
+
+                    <div>
+                        <span class="login__account">Already have an Account? </span>
+                        <span class="login__signup" id ="sign-in">Sign In</span>
+                    </div>
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+                    <!-- FireBase -->
+
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+    <script>
+         var firebaseConfig = {
+    apiKey: "AIzaSyA1tFjsSxzJiXtEWeeTHciAS7eW8tZwvgQ",
+    authDomain: "joresume-2886b.firebaseapp.com",
+    projectId: "joresume-2886b",
+    storageBucket: "joresume-2886b.appspot.com",
+    messagingSenderId: "797264466170",
+    appId: "1:797264466170:web:531ff10283342b5ec4f943",
+    measurementId: "G-BB9PSZG3V6"
+  };
+        firebase.initializeApp(firebaseConfig);
+
+    //    firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const fs = firebase.firestore();
+        const db = firebase.firestore();
+    </script>
+
+                <!-- SweetAlert -->
+
+    <script src="assets/js/sweetalert2.all.min.js"></script>
+
+                <!-- Main Js -->
+
+    <script src="assets/js/main.js"></script>
+
+                <!-- JavaScript -->
+             
+
+    
+</body>
+
+</html>
