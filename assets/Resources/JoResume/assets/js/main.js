@@ -1211,13 +1211,34 @@ function datasaver(){
     let enteredTwitter = document.querySelector('#twitter__text').value
     let enteredBio = document.querySelector('#profile__description-creator').value
     
+    let educationTitle = []
+    let eductaionInstitute = []
+    let enteredEducationtitle = document.querySelectorAll('.education__title-creator')
+    enteredEducationtitle.forEach(eductaion => {
+        educationTitle.push(eductaion.value)
+    })
+    
+    let enteredEducationName = document.querySelectorAll('.education__studies-creator')
+    enteredEducationName.forEach(eductaion => {
+        eductaionInstitute.push(eductaion.value)
+    })
+
+    
+    let enteredEducationYear = document.querySelectorAll('.education__year-creator')
+    let educationYear = []
+    enteredEducationYear.forEach(eductaion => {
+        educationYear.push(eductaion.value)
+    })
+    
+
+
     auth.onAuthStateChanged(user => {
         if(user){
             let name = user.uid + "_" + 963;
              
             // uploaderImage()
             fs.collection(user.uid).doc('_' + 963).set({
-              
+                
                 name,
                 enteredName,
                 enteredProfession,
@@ -1228,7 +1249,11 @@ function datasaver(){
                 enteredFacebook,
                 enteredInstagram,
                 enteredTwitter,
-                enteredBio
+                enteredBio,
+               
+                educationTitle,
+                educationYear,
+                eductaionInstitute
 
 
             
@@ -1241,12 +1266,13 @@ function datasaver(){
                 console.log(err.message)
             })
 
+            
 
             const ref = firebase.storage().ref();
             const file = document.querySelector(".uploadImage").files[0];
             
             const metadata = {
-            contentType: file.type
+            contentType: 'image/jpg'
             };
             const task = ref.child(name).put(file, metadata);
             task
@@ -1254,6 +1280,7 @@ function datasaver(){
             .then(url => {
 
                 fs.collection(user.uid).doc('_' + 963).set({
+                    
                 name,
                 enteredName,
                 enteredProfession,
@@ -1265,7 +1292,10 @@ function datasaver(){
                 enteredInstagram,
                 enteredTwitter,
                 enteredBio,
-                url
+                url,
+                educationTitle,
+                educationYear,
+                eductaionInstitute
                 })
                 const img = document.querySelector('.home__img')
                 img.setAttribute('src', `${url}`)
@@ -1315,6 +1345,9 @@ function renderData(userCode){
     setImage.src = `${userCode.data().url}`
     console.log('hi')
     console.log(userCode.data().url)
+
+
+
 }
 
 function displayContent(){
