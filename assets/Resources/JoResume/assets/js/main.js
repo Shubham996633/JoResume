@@ -1213,7 +1213,7 @@ function datasaver(){
     
     auth.onAuthStateChanged(user => {
         if(user){
-            const name = user.uid + "_" + uploadImage.name;
+            let name = user.uid + "_" + 963;
              
             // uploaderImage()
             fs.collection(user.uid).doc('_' + 963).set({
@@ -1252,6 +1252,21 @@ function datasaver(){
             task
             .then(snapshot => snapshot.ref.getDownloadURL())
             .then(url => {
+
+                fs.collection(user.uid).doc('_' + 963).set({
+                name,
+                enteredName,
+                enteredProfession,
+                enteredEmail,
+                enteredAddress,
+                enteredNumber,
+                enteredLinkedin,
+                enteredFacebook,
+                enteredInstagram,
+                enteredTwitter,
+                enteredBio,
+                url
+                })
                 const img = document.querySelector('.home__img')
                 img.setAttribute('src', `${url}`)
                 console.log(url);
@@ -1266,4 +1281,57 @@ function datasaver(){
 
 
 
+
+
 document.querySelector('.save').addEventListener('click', datasaver)
+
+
+function renderData(userCode){
+    let uploadImage = document.querySelector('#image-perfil')
+    let setImage = document.querySelector('.home__img-creator')
+   
+    let enteredName = document.querySelector('#home__title-creator')
+    let enteredProfession = document.querySelector('#home__profession-creator')
+    let enteredAddress = document.querySelector('#home__information-address-creator')
+    let enteredEmail = document.querySelector('#home__information-email-creator')
+    let enteredNumber = document.querySelector('#home__information-number-creator')
+    let enteredLinkedin = document.querySelector('#linkedin__text')
+    let enteredFacebook = document.querySelector('#facebook__text')
+    let enteredInstagram = document.querySelector('#instagram__text')
+    let enteredTwitter = document.querySelector('#twitter__text')
+    let enteredBio = document.querySelector('#profile__description-creator')
+
+    enteredName.value = userCode.data().enteredName
+    enteredProfession.value = userCode.data().enteredProfession
+    enteredAddress.value = userCode.data().enteredAddress
+    enteredEmail.value = userCode.data().enteredEmail
+    enteredNumber.value = userCode.data().enteredNumber
+    enteredLinkedin.value = userCode.data().enteredLinkedin
+    enteredFacebook.value = userCode.data().enteredFacebook
+    enteredInstagram.value = userCode.data().enteredInstagram
+    enteredTwitter.value = userCode.data().enteredTwitter
+    enteredBio.innerText = userCode.data().enteredBio
+    uploadImage.src = `${userCode.data().url}`
+    setImage.src = `${userCode.data().url}`
+    console.log('hi')
+    console.log(userCode.data().url)
+}
+
+function displayContent(){
+    auth.onAuthStateChanged(user => {
+        if(user){
+            fs.collection(user.uid).onSnapshot((snapshot) => {
+                let changes = snapshot.docChanges()
+                changes.forEach(change => {
+                    if(change.type === 'added'){
+                        renderData(change.doc)
+                    }else if(change.type === 'removed'){
+                        console.log('Developer Call')
+                    }
+                })
+            })
+        }
+    })
+}
+
+displayContent()
