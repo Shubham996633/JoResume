@@ -857,12 +857,24 @@ function deleteExperience(){
 }
 
 
-var original_certificate = document.querySelector('.certificate__content-creator');
 var n = 1
 function duplicate_certificate() {
+
+    const totalContainer = document.querySelectorAll('#new__certificate')
+    if(totalContainer.length === 1){
+        n = 2
+    }
+    if(document.querySelector('.certificate__content-creator')){
+
+        var original_certificate = document.querySelector('.certificate__content-creator');
+    }else{
+        var original_certificate = document.querySelector('.new__certificate1');
+
+    }
+
     var clone = original_certificate.cloneNode(true); // "deep" clone
     clone.id = "new__certificate" ; // there can only be one element with an ID
-    clone.className = `new__certificate${n}`
+    clone.className = `certificate__content new__certificate${n}`
     original_certificate.parentNode.appendChild(clone);
     n++;
 
@@ -877,23 +889,52 @@ function duplicate_certificate() {
 
 function changeCertificate(){
 
-    const totalCertificate = document.querySelectorAll('#new__certificate')
+    if(document.querySelector('.certificate__content-creator')){
 
-    if(totalCertificate.length === 0){
-        document.querySelector('.delete__certificate').disabled = true
-    }else if(totalCertificate.length > 0){
-        document.querySelector('.delete__certificate').disabled = false
-        const inputCertificateContainer = document.querySelector(`.new__certificate${totalCertificate.length}`)
+        const totalCertificate = document.querySelectorAll('#new__certificate')
+    
+        if(totalCertificate.length === 0){
+            document.querySelector('.delete__certificate').disabled = true
+        }else if(totalCertificate.length > 0){
+            document.querySelector('.delete__certificate').disabled = false
+            const inputCertificateContainer = document.querySelector(`.new__certificate${totalCertificate.length}`)
+    
+            let certifiTitle = inputCertificateContainer.querySelector('.certificate__title-creator')
+            certifiTitle.value = ""
+    
+            let certiflink = inputCertificateContainer.querySelector('.certificate-link-creator')
+            certiflink.value = ""
+    
+            let certifidescp = inputCertificateContainer.querySelector('.certificate__description-creator')
+            certifidescp.value = ""
+        }
+    }else{
 
-        let certifiTitle = inputCertificateContainer.querySelector('.certificate__title-creator')
-        certifiTitle.value = ""
+        const totalCertificate = document.querySelectorAll('#new__certificate')
+    
+        if(totalCertificate.length === 0){
+            document.querySelector('.delete__certificate').disabled = true
+        }else if (totalCertificate.length === 1){
+            console.log('cant change initial value')
+            document.querySelector('.delete__certificate').disabled = false
+            
+        }
+        else{
+            document.querySelector('.delete__certificate').disabled = false
+            const inputCertificateContainer = document.querySelector(`.new__certificate${totalCertificate.length}`)
+    
+            let certifiTitle = inputCertificateContainer.querySelector('.certificate__title-creator')
+            certifiTitle.value = ""
+    
+            let certiflink = inputCertificateContainer.querySelector('.certificate-link-creator')
+            certiflink.value = ""
+    
+            let certifidescp = inputCertificateContainer.querySelector('.certificate__description-creator')
+            certifidescp.value = ""
+        }
 
-        let certiflink = inputCertificateContainer.querySelector('.certificate-link-creator')
-        certiflink.value = ""
-
-        let certifidescp = inputCertificateContainer.querySelector('.certificate__description-creator')
-        certifidescp.value = ""
     }
+
 
 }
 
@@ -901,14 +942,33 @@ function changeCertificate(){
 document.querySelector('.delete__certificate').addEventListener('click', deletecertificate)
 
 function deletecertificate(){
-    const totalCertificate = document.querySelectorAll('#new__certificate')
-     if(totalCertificate.length === 0){
-         document.querySelector('.delete__certificate').disabled = true
-     }else if(totalCertificate.length > 0){
-         document.querySelector('.delete__certificate').disabled = false
-         let deleteItem = document.querySelector(`.new__certificate${totalCertificate.length}`)
-         deleteItem.parentNode.removeChild(deleteItem)
-}
+
+    if(document.querySelector('.certificate__content-creator')){
+
+        const totalCertificate = document.querySelectorAll('#new__certificate')
+         if(totalCertificate.length === 0){
+             document.querySelector('.delete__certificate').disabled = true
+         }else if(totalCertificate.length > 0){
+             document.querySelector('.delete__certificate').disabled = false
+             let deleteItem = document.querySelector(`.new__certificate${totalCertificate.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }else{
+        const totalCertificate = document.querySelectorAll('#new__certificate')
+         if(totalCertificate.length === 0){
+             document.querySelector('.delete__certificate').disabled = true
+         }else if(totalCertificate.length === 1){
+            console.log('failed to delete')
+            document.querySelector('.delete__certificate').disabled = true
+            
+         }
+         else{
+             document.querySelector('.delete__certificate').disabled = false
+             let deleteItem = document.querySelector(`.new__certificate${totalCertificate.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+
+    }
 }
 
 var x = 1
@@ -1365,6 +1425,29 @@ function datasaver(){
         experienceinfo.push(experience.value)
     })
 
+
+    let certificateTitle = []
+    let certificateLink = []
+    let certifcateInfo = []
+
+    let enteredCertificateTitle = document.querySelectorAll('.certificate__title-creator')
+    let enteredCertificateLink = document.querySelectorAll('.certificate-link-creator')
+    let enteredCertificateinfo = document.querySelectorAll('.certificate__description-creator')
+
+    enteredCertificateTitle.forEach(certificate => {
+        certificateTitle.push(certificate.value)
+    })
+
+    enteredCertificateLink.forEach(certificate => {
+        certificateLink.push(certificate.value)
+    })
+
+
+    enteredCertificateinfo.forEach(certificate => {
+        certifcateInfo.push(certificate.value)
+    })
+
+
     
 
 
@@ -1392,7 +1475,12 @@ function datasaver(){
                 eductaionInstitute,
                 experienceTitle,
                 experienceLink,
-                experienceinfo
+                experienceinfo,
+                certificateTitle,
+                certificateLink,
+                certifcateInfo
+
+
 
 
 
@@ -1438,7 +1526,10 @@ function datasaver(){
                 eductaionInstitute,
                 experienceTitle,
                 experienceLink,
-                experienceinfo
+                experienceinfo,
+                certificateTitle,
+                certificateLink,
+                certifcateInfo
                 })
                 const img = document.querySelector('.home__img')
                 img.setAttribute('src', `${url}`)
@@ -1562,6 +1653,41 @@ function renderData(userCode){
         j++
     })
 
+    if(document.querySelector('.certificate__content-creator')){
+        n = 1
+
+    }else{
+    }
+
+    let certificateheadingList = userCode.data().certificateTitle
+    let certificateLinkList = userCode.data().certificateLink
+    let certifcateInfoList = userCode.data().certifcateInfo
+
+    let certificateFilledData = document.querySelector('.certificate__container')
+
+    certificateFilledData.innerHTML = ""
+    let certiinfo = 0
+    certificateheadingList.forEach(heading => {
+        certificateFilledData.innerHTML += `
+        
+        <div class="certificate__content new__certificate${n}" id = "new__certificate">
+                                <h3 class="certficiate__title">
+    
+                                    <input type="text" name="" id="" class="certificate__title-creator" placeholder="Certifcate Title" value = "${heading}">
+                                    <br>
+                                    <input type="text" name="" id="" class="certificate-link-creator" placeholder="Certificate Valid Link" value = "${certificateLinkList[certiinfo]}">
+    
+                                </h3>
+                                <p class="certificate__description">
+                                    <input type="text" class="certificate__description-creator" name="" id="" placeholder="Tell Something about the Certificate" value = "${certifcateInfoList[certiinfo]}">
+                                </p>
+                            </div>
+        
+        `
+
+    certiinfo = certiinfo + 1
+    n++
+    })
 
 
 
