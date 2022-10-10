@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Firebase Image Upload in Javascript</title>
+  </head>
+  <body>
+    <input type="file" id="photo" />
+    <button onclick="uploadImage()">Upload Image</button>
+    <!-- Stream video via webcam -->
+
+<img class="image">
+
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+
+  <script>
+    var firebaseConfig = {
+		apiKey: "AIzaSyA1tFjsSxzJiXtEWeeTHciAS7eW8tZwvgQ",
+    authDomain: "joresume-2886b.firebaseapp.com",
+    projectId: "joresume-2886b",
+    storageBucket: "joresume-2886b.appspot.com",
+    messagingSenderId: "797264466170",
+    appId: "1:797264466170:web:531ff10283342b5ec4f943",
+    measurementId: "G-BB9PSZG3V6"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+
+    function uploadImage() {
+      const ref = firebase.storage().ref();
+      const file = document.querySelector("#photo").files[0];
+      const name = +new Date() + "-" + file.name;
+      const metadata = {
+        contentType: file.type
+      };
+      const task = ref.child(name).put(file, metadata);
+      task
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+			const img = document.querySelector('.image')
+			img.setAttribute('src', `${url}`)
+          console.log(url);
+        })
+        .catch(console.error);
+    }
+
+
+
+
+
+
+
+
+  </script>
+</html>

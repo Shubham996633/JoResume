@@ -1176,4 +1176,94 @@ function logout() {
     
     
 }
+
+function uploaderImage() {
+    const ref = firebase.storage().ref();
+    const file = document.querySelector(".uploadImage").files[0];
+    const name = +new Date() + "-" + file.name;
+    const metadata = {
+      contentType: file.type
+    };
+    const task = ref.child(name).put(file, metadata);
+    task
+      .then(snapshot => snapshot.ref.getDownloadURL())
+      .then(url => {
+          const img = document.querySelector('.home__img')
+          img.setAttribute('src', `${url}`)
+        console.log(url);
+      })
+      .catch(console.error);
+}
 document.querySelector('.logout').addEventListener('click', logout)
+
+
+function datasaver(){
+    let uploadImage = document.querySelector('.uploadImage').files[0]
+    
+    let enteredName = document.querySelector('#home__title-creator').value
+    let enteredProfession = document.querySelector('#home__profession-creator').value
+    let enteredAddress = document.querySelector('#home__information-address-creator').value
+    let enteredEmail = document.querySelector('#home__information-email-creator').value
+    let enteredNumber = document.querySelector('#home__information-number-creator').value
+    let enteredLinkedin = document.querySelector('#linkedin__text').value
+    let enteredFacebook = document.querySelector('#facebook__text').value
+    let enteredInstagram = document.querySelector('#instagram__text').value
+    let enteredTwitter = document.querySelector('#twitter__text').value
+    let enteredBio = document.querySelector('#profile__description-creator').value
+    
+    auth.onAuthStateChanged(user => {
+        if(user){
+            const name = user.uid + "_" + uploadImage.name;
+             
+            // uploaderImage()
+            fs.collection(user.uid).doc('_' + 963).set({
+              
+                name,
+                enteredName,
+                enteredProfession,
+                enteredEmail,
+                enteredAddress,
+                enteredNumber,
+                enteredLinkedin,
+                enteredFacebook,
+                enteredInstagram,
+                enteredTwitter,
+                enteredBio
+
+
+            
+            }).then(() => {
+
+                
+        
+
+            }).catch(err => {
+                console.log(err.message)
+            })
+
+
+            const ref = firebase.storage().ref();
+            const file = document.querySelector(".uploadImage").files[0];
+            
+            const metadata = {
+            contentType: file.type
+            };
+            const task = ref.child(name).put(file, metadata);
+            task
+            .then(snapshot => snapshot.ref.getDownloadURL())
+            .then(url => {
+                const img = document.querySelector('.home__img')
+                img.setAttribute('src', `${url}`)
+                console.log(url);
+            })
+            .catch(console.error);
+                }else{
+
+                }
+    })
+}
+
+
+
+
+document.querySelector('.save').addEventListener('click', datasaver)
