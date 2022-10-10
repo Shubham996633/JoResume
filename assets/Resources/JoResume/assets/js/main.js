@@ -614,17 +614,26 @@ function updater(){
 
 }   
 
-var original = document.querySelector('.education__content-creator');
-
+``
 var i = 1;
 function duplicate() {
+    const totalContainer = document.querySelectorAll("#new__education")
+    if(totalContainer.length === 1){
+        i = 2
+    }
+    if(document.querySelector('.education__content-creator')){
+
+        var original = document.querySelector('.education__content-creator');
+    }else{
+        var original = document.querySelector('.new__education1')
+    }
 
     var clone = original.cloneNode(true); // "deep" clone
      // there can only be one element with an ID
 
     clone.id = "new__education"; // there can only be one element with an ID
 
-    clone.className = `new__education${i}` 
+    clone.className = `education__content new__education${i}` 
 
     original.parentNode.appendChild(clone);
     i++;
@@ -640,53 +649,112 @@ function duplicate() {
 
 
 function changeEducation(){
+    if(document.querySelector('.education__content-creator')){
 
-    const totalEducation = document.querySelectorAll('#new__education')
+        const totalEducation = document.querySelectorAll('#new__education')
+    
+        if(totalEducation.length === 0){
+    
+            document.querySelector('.delete__education').disabled = true
+            
+        }else if(totalEducation.length > 0){
+    
+            document.querySelector('.delete__education').disabled = false
+            const inputEducationContainer = document.querySelector(`.new__education${totalEducation.length}`)
+    
+            let eductationTitle = inputEducationContainer.querySelector('.education__title-creator')
+            eductationTitle.value = ""
+            
+            let eductaionInstitute = inputEducationContainer.querySelector('.education__studies-creator')
+            eductaionInstitute.value = ""
+    
+            let educationYear = inputEducationContainer.querySelector('.education__year-creator')
+            educationYear.value = ""
+        }
+    }else{
 
-    if(totalEducation.length === 0){
+        const totalEducation = document.querySelectorAll('#new__education')
+    
+        if(totalEducation.length === 0){
+    
+            document.querySelector('.delete__education').disabled = true
+            
+        }else if (totalEducation.length === 1){
+            console.log('cant change initial value')
+            document.querySelector('.delete').disabled = false
+            
+        }
+        else{
+    
+            document.querySelector('.delete__education').disabled = false
+            const inputEducationContainer = document.querySelector(`.new__education${totalEducation.length}`)
+    
+            let eductationTitle = inputEducationContainer.querySelector('.education__title-creator')
+            eductationTitle.value = ""
+            
+            let eductaionInstitute = inputEducationContainer.querySelector('.education__studies-creator')
+            eductaionInstitute.value = ""
+    
+            let educationYear = inputEducationContainer.querySelector('.education__year-creator')
+            educationYear.value = ""
+        }
 
-        document.querySelector('.delete__education').disabled = true
-        
-    }else if(totalEducation.length > 0){
-
-        document.querySelector('.delete__education').disabled = false
-        const inputEducationContainer = document.querySelector(`.new__education${totalEducation.length}`)
-
-        let eductationTitle = inputEducationContainer.querySelector('.education__title-creator')
-        eductationTitle.value = ""
-        
-        let eductaionInstitute = inputEducationContainer.querySelector('.education__studies-creator')
-        eductaionInstitute.value = ""
-
-        let educationYear = inputEducationContainer.querySelector('.education__year-creator')
-        educationYear.value = ""
     }
+
 }
 document.querySelector('.delete__education').addEventListener('click', deleteEducation)
 
 
 function deleteEducation(){
-    const totalEducation = document.querySelectorAll('#new__education')
-     if(totalEducation.length === 0){
-         document.querySelector('.delete__education').disabled = true
-     }else if(totalEducation.length > 0){
-         document.querySelector('.delete__education').disabled = false
-         let deleteItem = document.querySelector(`.new__education${totalEducation.length}`)
-         deleteItem.parentNode.removeChild(deleteItem)
-}
+
+    if(document.querySelector('.education__content-creator')){
+
+        const totalEducation = document.querySelectorAll('#new__education')
+         if(totalEducation.length === 0){
+             document.querySelector('.delete__education').disabled = true
+         }else if(totalEducation.length > 0){
+             let deleteItem = document.querySelector(`.new__education${totalEducation.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }else{
+        const totalEducation = document.querySelectorAll('#new__education')
+         if(totalEducation.length === 0){
+             document.querySelector('.delete__education').disabled = true
+         }else if(totalEducation.length === 1){
+            console.log('failed to delete')
+            document.querySelector('.delete').disabled = true
+            
+         }
+         
+         else{
+             let deleteItem = document.querySelector(`.new__education${totalEducation.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }
+
 
 }
 
 
-var original_experience = document.querySelector('.experience__content-creator');
 
 var j = 1;
 function duplicate_experience() {
+    const totalContainer = document.querySelectorAll("#new__experience")
+    if(totalContainer.length === 1){
+        j = 2
+    }
+    if(document.querySelector('.experience__content-creator')){
+
+        var original_experience = document.querySelector('.experience__content-creator');
+    }else{
+        var original_experience = document.querySelector('.new__experience1');
+
+    }
 
     var clone = original_experience.cloneNode(true); // "deep" clone
     clone.id = "new__experience";
      // there can only be one element with an ID
-    clone.className = `new__experience${j}`
+    clone.className = `experience__content new__experience${j}`
     original_experience.parentNode.appendChild(clone);
     j++;
 
@@ -702,40 +770,90 @@ function duplicate_experience() {
 
 
 function changeExperience(){
-    const totalExperience = document.querySelectorAll('#new__experience')
-
-    if(totalExperience.length === 0){
-
-        document.querySelector('.delete__experience').disabled = true
-
-    }else if(totalExperience.length > 0){
-        document.querySelector('.delete__experience').disabled = false
-
-        const inputExperienceContainer = document.querySelector(`.new__experience${totalExperience.length}`)
-
-        let experienceTitle = inputExperienceContainer.querySelector('.experience__title-creator')
-        experienceTitle.value = ""
-
-        let experienceCompany = inputExperienceContainer.querySelector('.experience__company-creator-time')
-        experienceCompany.value = ""
-
-        let experienceDescp = inputExperienceContainer.querySelector('.experience__description-creator')
-        experienceDescp.value = ""
-
+    if(document.querySelector('.experience__content-creator')){
+        
+        const totalExperience = document.querySelectorAll('#new__experience')
+    
+        if(totalExperience.length === 0){
+    
+            document.querySelector('.delete__experience').disabled = true
+    
+        }else if(totalExperience.length > 0){
+            document.querySelector('.delete__experience').disabled = false
+    
+            const inputExperienceContainer = document.querySelector(`.new__experience${totalExperience.length}`)
+    
+            let experienceTitle = inputExperienceContainer.querySelector('.experience__title-creator')
+            experienceTitle.value = ""
+    
+            let experienceCompany = inputExperienceContainer.querySelector('.experience__company-creator-time')
+            experienceCompany.value = ""
+    
+            let experienceDescp = inputExperienceContainer.querySelector('.experience__description-creator')
+            experienceDescp.value = ""
+    
+        }
+    }else{
+        const totalExperience = document.querySelectorAll('#new__experience')
+    
+        if(totalExperience.length === 0){
+    
+            document.querySelector('.delete__experience').disabled = true
+    
+        
+        }else if (totalExperience.length === 1){
+            console.log('cant change initial value')
+            document.querySelector('.delete__experience').disabled = false
+            
+        }
+        else{
+            document.querySelector('.delete__experience').disabled = false
+    
+            const inputExperienceContainer = document.querySelector(`.new__experience${totalExperience.length}`)
+    
+            let experienceTitle = inputExperienceContainer.querySelector('.experience__title-creator')
+            experienceTitle.value = ""
+    
+            let experienceCompany = inputExperienceContainer.querySelector('.experience__company-creator-time')
+            experienceCompany.value = ""
+    
+            let experienceDescp = inputExperienceContainer.querySelector('.experience__description-creator')
+            experienceDescp.value = ""
+    
+        }
     }
 }
 
 
 document.querySelector('.delete__experience').addEventListener('click', deleteExperience)
+
 function deleteExperience(){
-    const totalExperience = document.querySelectorAll('#new__experience')
-     if(totalExperience.length === 0){
-         document.querySelector('.delete__experience').disabled = true
-     }else if(totalExperience.length > 0){
-         document.querySelector('.delete__experience').disabled = false
-         let deleteItem = document.querySelector(`.new__experience${totalExperience.length}`)
-         deleteItem.parentNode.removeChild(deleteItem)
-}
+
+    if(document.querySelector('.experience__content-creator')){
+
+        const totalExperience = document.querySelectorAll('#new__experience')
+         if(totalExperience.length === 0){
+             document.querySelector('.delete__experience').disabled = true
+         }else if(totalExperience.length > 0){
+             document.querySelector('.delete__experience').disabled = false
+             let deleteItem = document.querySelector(`.new__experience${totalExperience.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }else{
+
+        const totalExperience = document.querySelectorAll('#new__experience')
+         if(totalExperience.length === 0){
+             document.querySelector('.delete__experience').disabled = true
+         }else if(totalExperience.length === 1){
+            console.log('failed to delete')
+            document.querySelector('.delete__experience').disabled = true
+            
+         }
+         else{
+             let deleteItem = document.querySelector(`.new__experience${totalExperience.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }
 }
 
 
@@ -1229,6 +1347,24 @@ function datasaver(){
     enteredEducationYear.forEach(eductaion => {
         educationYear.push(eductaion.value)
     })
+
+    let experienceTitle = []
+    let experienceLink = []
+    let experienceinfo = []
+    let enteredExperienceTitle = document.querySelectorAll('.experience__title-creator')
+    let enteredExperienceLink = document.querySelectorAll('.experience__company-creator-time')
+    let enteredExperienceinfo = document.querySelectorAll('.experience__description-creator')
+
+    enteredExperienceTitle.forEach(experience => {
+        experienceTitle.push(experience.value)
+    })
+    enteredExperienceLink.forEach(experience => {
+        experienceLink.push(experience.value)
+    })
+    enteredExperienceinfo.forEach(experience => {
+        experienceinfo.push(experience.value)
+    })
+
     
 
 
@@ -1253,7 +1389,11 @@ function datasaver(){
                
                 educationTitle,
                 educationYear,
-                eductaionInstitute
+                eductaionInstitute,
+                experienceTitle,
+                experienceLink,
+                experienceinfo
+
 
 
             
@@ -1295,7 +1435,10 @@ function datasaver(){
                 url,
                 educationTitle,
                 educationYear,
-                eductaionInstitute
+                eductaionInstitute,
+                experienceTitle,
+                experienceLink,
+                experienceinfo
                 })
                 const img = document.querySelector('.home__img')
                 img.setAttribute('src', `${url}`)
@@ -1345,6 +1488,80 @@ function renderData(userCode){
     setImage.src = `${userCode.data().url}`
     console.log('hi')
     console.log(userCode.data().url)
+    if(document.querySelector('.education__content-creator')){
+        i = 1
+
+    }else{
+    }
+    let educationheadingList = userCode.data().educationTitle
+    let educationInstituteList = userCode.data().eductaionInstitute
+    let educationYearList = userCode.data().educationYear
+    
+    let educationFilledData = document.querySelector('.education__container')
+    let vis = 0
+    educationFilledData.innerHTML = ""
+    educationheadingList.forEach(heading => {
+        educationFilledData.innerHTML += `
+                            <div class="education__content new__education${i}" id="new__education">
+                                                        <div class="education__time">
+                                                            <span class="education__rounder"></span>
+                                                            <span class="education__line"></span>
+                                                        </div>
+                        
+                                                        <div class="education__data bd-grid">
+                                                            <h3 class="education__title">
+                                                                <input type="text" name="" id="education__title-creator" class="education__title-creator" placeholder="Degree Name" value = "${heading}">
+                                                            </h3>
+                                                            <span class="education__studies"><input type="text" name="" class="education__studies-creator" placeholder="Institute Name" value = "${educationInstituteList[vis]}"></span>
+                                                            <span class="education__year"><input type="text" name="" class="education__year-creator" placeholder=" Year: 20XX-20XX" value = "${educationYearList[vis]}"></span>
+                                                        </div>
+                                                        
+                                         
+        
+        `
+    
+        vis = vis+ 1;
+        i++
+
+
+    })
+    
+
+    if(document.querySelector('.experience__content-creator')){
+        j = 1
+
+    }else{
+    }
+
+    let experienceheadingList = userCode.data().experienceTitle
+    let experienceLinkList = userCode.data().experienceLink
+    let experienceinfoList = userCode.data().experienceinfo
+
+    let experienceFilledData = document.querySelector('.experience__container')
+    let expinfo = 0
+    experienceFilledData.innerHTML = ""
+    experienceheadingList.forEach(heading => {
+        experienceFilledData.innerHTML += `
+                    <div class="experience__content new__experience${j}" id = "new__experience">
+                    <div class="experience__time">
+                        <span class="experience__rounder"></span>
+                        <span class="experience__line"></span>
+                    </div>
+
+                    <div class="experience__data bd-grid">
+                        <h3 class="experience__title"><input type="text" name="" class="experience__title-creator" id="" placeholder="Project Title" value = "${heading}"></h3>
+                        <span class="experience__company"><input type="text" name="" class="experience__company-creator-time" id="" placeholder="Project's Live Link" value = "${experienceLinkList[expinfo]}"> </span>
+                        <p class="experience__description"><input type="text" name="" class="experience__description-creator" id="" placeholder="Some Details about this Projects" value = "${experienceinfoList[expinfo]}"></p>
+
+                    </div>
+                </div>
+                        
+        `
+
+        expinfo = expinfo +1
+        j++
+    })
+
 
 
 
