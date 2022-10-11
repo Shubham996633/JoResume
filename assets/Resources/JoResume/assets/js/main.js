@@ -223,7 +223,7 @@ document.querySelector('.editing-pdf').addEventListener('click', ()=> {
 
 document.getElementById('perfil__input').addEventListener('change', readfichier);
 
-
+var myImage 
 function readfichier(){
     let file = document.getElementById("perfil__input").files[0];
 
@@ -241,7 +241,54 @@ function readfichier(){
       document.getElementById("image-perfil").src = reader.result;
       document.querySelector(".home__img-creator").src = reader.result;
 
+      auth.onAuthStateChanged(user => {
+          if(user){
+              fs.collection(user.uid).doc('_963').get().then(snapshot => {
+                  console.log(snapshot.data())
+                  // if(snapshot.data() != undefined){
+  
+                      // if(snapshot.data().name){
+                          console.log('yo')
+      
+                          let imagename = user.uid + '_963'
+                      
+                     
+                      
+                      const ref = firebase.storage().ref()
+                      const metadata = {
+                          contentType: 'image/jpg'
+                          };
+                      const task = ref.child(imagename).put(file, metadata);
+                      task
+                      .then(snapshot => snapshot.ref.getDownloadURL())
+                      .then(newurl => {
+                          console.log(`New Url = ${newurl}`)
+                          myImage = newurl
+                          fs.collection(user.uid).doc('_' + 963).update({
+                              url: newurl,
+                              name: imagename
+                              
+                          })
+                          document.getElementById("image-perfil").src = newurl;
+                              document.querySelector(".home__img-creator").src = newurl;
+                              document.querySelector(".home__img").src = newurl;
+                      })
+                  // }
+                  // }
+              })
+          
+  
+          }
+      })
     };
+    
+    // const ref = firebase.storage().ref()
+    // const metadata = {
+    //     contentType: 'image/jpg'
+    //     };
+    // const task = ref.child(name).put(file, metadata);
+    
+    
 
     const Toast = Swal.mixin({
         toast: true,
@@ -261,6 +308,9 @@ function readfichier(){
       })
 
 }
+
+
+
 
 function updater(){
 
@@ -1599,6 +1649,8 @@ function uploaderImage() {
       .then(url => {
           const img = document.querySelector('.home__img')
           img.setAttribute('src', `${url}`)
+          document.getElementById("image-perfil").src = url;
+          document.querySelector(".home__img-creator").src = url;
         console.log(url);
       })
       .catch(console.error);
@@ -1725,7 +1777,15 @@ function datasaver(){
         intrestTitle.push(intrest.value)
     })
 
-    
+    setTimeout(() => {
+        console.log(myImage)
+        
+    }, 10000);
+
+    let url =  myImage;
+    if(url === undefined){
+        url = document.querySelector(".home__img").src
+    }
 
 
     auth.onAuthStateChanged(user => {
@@ -1746,7 +1806,7 @@ function datasaver(){
                 enteredInstagram,
                 enteredTwitter,
                 enteredBio,
-               
+               url,
                 educationTitle,
                 educationYear,
                 eductaionInstitute,
@@ -1778,59 +1838,44 @@ function datasaver(){
                 console.log(err.message)
             })
 
-            
-
-            const ref = firebase.storage().ref();
-            const file = document.querySelector(".uploadImage").files[0];
-            
-            const metadata = {
-            contentType: 'image/jpg'
-            };
-            const task = ref.child(name).put(file, metadata);
-            task
-            .then(snapshot => snapshot.ref.getDownloadURL())
-            .then(url => {
-
-                fs.collection(user.uid).doc('_' + 963).set({
+            fs.collection(user.uid).doc('_963').get().then(snapshot => {
+                console.log(snapshot.data())
+                if(snapshot.data() != undefined){
+                    if(snapshot.data().url === ""){
+                    console.log('yo')
+                    const ref = firebase.storage().ref();
+                    const file = document.querySelector(".uploadImage").files[0];
                     
-                name,
-                enteredName,
-                enteredProfession,
-                enteredEmail,
-                enteredAddress,
-                enteredNumber,
-                enteredLinkedin,
-                enteredFacebook,
-                enteredInstagram,
-                enteredTwitter,
-                enteredBio,
-                url,
-                educationTitle,
-                educationYear,
-                eductaionInstitute,
-                experienceTitle,
-                experienceLink,
-                experienceinfo,
-                certificateTitle,
-                certificateLink,
-                certifcateInfo,
-                referencesPost,
-                referencesName,
-                referencesNumber,
-                referencesEmail,
-                languageTitle,
-                skillsTitle,
-                intrestTitle
+                    const metadata = {
+                    contentType: 'image/jpg'
+                    };
+                    const task = ref.child(name).put(file, metadata);
+                    task
+                    .then(snapshot => snapshot.ref.getDownloadURL())
+                    .then(url => {
+                        console.log('i am back')
 
-                })
-                const img = document.querySelector('.home__img')
-                img.setAttribute('src', `${url}`)
-                console.log(url);
-            })
+        
+                        fs.collection(user.uid).doc('_' + 963).update({
+                            
+                        url
+                        
+        
+                        })
+                        const img = document.querySelector('.home__img')
+                        img.setAttribute('src', `${url}`)
+                        document.getElementById("image-perfil").src = url;
+                        document.querySelector(".home__img-creator").src = url;
+                        console.log(url);
+                    })
+                }
+            }
+            })            
             .catch(console.error);
                 }else{
 
                 }
+
     })
 }
 
@@ -1869,7 +1914,8 @@ function renderData(userCode){
     enteredBio.innerText = userCode.data().enteredBio
     uploadImage.src = `${userCode.data().url}`
     setImage.src = `${userCode.data().url}`
-    console.log('hi')
+    document.getElementById("image-perfil").src = userCode.data().url;
+    document.querySelector(".home__img-creator").src = userCode.data().url;
     console.log(userCode.data().url)
     if(document.querySelector('.education__content-creator')){
         i = 1
