@@ -101,6 +101,8 @@ function removeScale(){
 
 let areaCv = document.getElementById('area-cv')
 
+
+
 let resumeButton = document.getElementById('resume-button')
 let creator = document.querySelector('.generate-pdf')
 
@@ -112,9 +114,14 @@ let opt = {
     html2canvas:  { scale: 4 },
     jsPDF:        { format: 'a4', orientation: 'portrait' },
     enableLinks: true,
-    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+    // useCORS: true
     
   };
+
+
+
+// Save the PDF
 
 
 
@@ -125,7 +132,7 @@ function generateResume(){
 
 resumeButton.addEventListener('click', () => {
     scaleCv()
-
+    
     generateResume()
 
     setTimeout(removeScale, 5000)
@@ -234,12 +241,13 @@ function readfichier(){
     reader.readAsDataURL(file);
   
     console.log(reader.result);
+    //  document.getElementById("image-perfil").src = reader.result;
+    //   document.querySelector(".home__img-creator").src = reader.result;
   
     //set the image to template
   
     reader.onloadend = function () {
-      document.getElementById("image-perfil").src = reader.result;
-      document.querySelector(".home__img-creator").src = reader.result;
+      
 
       auth.onAuthStateChanged(user => {
           if(user){
@@ -264,14 +272,29 @@ function readfichier(){
                       .then(newurl => {
                           console.log(`New Url = ${newurl}`)
                           myImage = newurl
-                          fs.collection(user.uid).doc('_' + 963).update({
-                              url: newurl,
-                              name: imagename
-                              
-                          })
-                          document.getElementById("image-perfil").src = newurl;
-                              document.querySelector(".home__img-creator").src = newurl;
-                              document.querySelector(".home__img").src = newurl;
+
+                        if(snapshot.data() != undefined){
+  
+                              console.log('I Am here')
+                              fs.collection(user.uid).doc('_' + 963).update({
+                                  url: newurl,
+                                  name: imagename
+                                  
+                              })
+                        }
+                            document.getElementById("image-perfil").src = newurl;
+                            document.querySelector(".home__img-creator").src = newurl;
+                       
+  
+                            document.querySelector(".home__img").src = newurl;
+
+
+
+                            console.log('hi')
+
+                           
+                            
+                            
                       })
                   // }
                   // }
@@ -1651,6 +1674,8 @@ function uploaderImage() {
           img.setAttribute('src', `${url}`)
           document.getElementById("image-perfil").src = url;
           document.querySelector(".home__img-creator").src = url;
+          
+          document.querySelector(".home__img").src = url;
         console.log(url);
       })
       .catch(console.error);
@@ -1866,6 +1891,11 @@ function datasaver(){
                         img.setAttribute('src', `${url}`)
                         document.getElementById("image-perfil").src = url;
                         document.querySelector(".home__img-creator").src = url;
+
+                      
+          
+                        document.querySelector(".home__img").src = url;
+                        
                         console.log(url);
                     })
                 }
@@ -1916,6 +1946,10 @@ function renderData(userCode){
     setImage.src = `${userCode.data().url}`
     document.getElementById("image-perfil").src = userCode.data().url;
     document.querySelector(".home__img-creator").src = userCode.data().url;
+
+    
+          
+    document.querySelector(".home__img").src = userCode.data().url;
     console.log(userCode.data().url)
     if(document.querySelector('.education__content-creator')){
         i = 1
