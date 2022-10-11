@@ -972,12 +972,24 @@ function deletecertificate(){
 }
 
 var x = 1
-var original_references = document.querySelector('.references__content-creator');
 
 function duplicate_references() {
+
+    const totalContainer = document.querySelectorAll('#new__references')
+    if(totalContainer.length === 1){
+        x = 2
+    }
+    if(document.querySelector('.references__content-creator')){
+        
+        var original_references = document.querySelector('.references__content-creator');
+    }else{
+        var original_references = document.querySelector('.new__references1');
+
+    }
+
     var clone = original_references.cloneNode(true); // "deep" clone
     clone.id = "new__references"; // there can only be one element with an ID
-    clone.className = `new__references${x}`
+    clone.className = `references__content new__references${x}`
     original_references.parentNode.appendChild(clone);
     x++;
 
@@ -991,27 +1003,62 @@ function duplicate_references() {
 }
 
 function changeRefernces(){
-    const totalReferences = document.querySelectorAll('#new__references')
 
-    if(totalReferences.length === 0){
-        document.querySelector('.delete__refrences').disabled = true
+    if(document.querySelector('.references__content-creator')){
 
-    }else if(totalReferences.length > 0){
-        document.querySelector('.delete__refrences').disabled = false
-
-        const inputReferenceContainer = document.querySelector(`.new__references${totalReferences.length}`)
+        const totalReferences = document.querySelectorAll('#new__references')
+    
+        if(totalReferences.length === 0){
+            document.querySelector('.delete__refrences').disabled = true
+    
+        }else if(totalReferences.length > 0){
+            document.querySelector('.delete__refrences').disabled = false
+    
+            const inputReferenceContainer = document.querySelector(`.new__references${totalReferences.length}`)
+            
+            let refrenceTitle = inputReferenceContainer.querySelector('.references__post-creator')
+            refrenceTitle.value = ""
+    
+            let referncePost = inputReferenceContainer.querySelector('.references__title-creator')
+            referncePost.value = ""
+    
+            let refenceNumber = inputReferenceContainer.querySelector('.references__number-creator')
+            refenceNumber.value = ""
+    
+            let refrenceEmail = inputReferenceContainer.querySelector('.references__email-creator')
+            refrenceEmail.value = ""
+        }
+    }else{
         
-        let refrenceTitle = inputReferenceContainer.querySelector('.references__post-creator')
-        refrenceTitle.value = ""
+        const totalReferences = document.querySelectorAll('#new__references')
+    
+        if(totalReferences.length === 0){
+            document.querySelector('.delete__refrences').disabled = true
+    
+        }else if (totalReferences.length === 1){
+            console.log('cant change initial value')
+            document.querySelector('.delete__refrences').disabled = false
+            
+        }
+        
+        else{
+            document.querySelector('.delete__refrences').disabled = false
+    
+            const inputReferenceContainer = document.querySelector(`.new__references${totalReferences.length}`)
+            
+            let refrenceTitle = inputReferenceContainer.querySelector('.references__post-creator')
+            refrenceTitle.value = ""
+    
+            let referncePost = inputReferenceContainer.querySelector('.references__title-creator')
+            referncePost.value = ""
+    
+            let refenceNumber = inputReferenceContainer.querySelector('.references__number-creator')
+            refenceNumber.value = ""
+    
+            let refrenceEmail = inputReferenceContainer.querySelector('.references__email-creator')
+            refrenceEmail.value = ""
+        }
 
-        let referncePost = inputReferenceContainer.querySelector('.references__title-creator')
-        referncePost.value = ""
-
-        let refenceNumber = inputReferenceContainer.querySelector('.references__number-creator')
-        refenceNumber.value = ""
-
-        let refrenceEmail = inputReferenceContainer.querySelector('.references__email-creator')
-        refrenceEmail.value = ""
     }
 }
 
@@ -1020,25 +1067,57 @@ document.querySelector('.delete__refrences').addEventListener('click', deleteref
 
 
 function deleterefrence(){
-    const totalReferences = document.querySelectorAll('#new__references')
-     if(totalReferences.length === 0){
-         document.querySelector('.delete__refrences').disabled = true
-     }else if(totalReferences.length > 0){
-         document.querySelector('.delete__refrences').disabled = false
-         let deleteItem = document.querySelector(`.new__references${totalReferences.length}`)
-         deleteItem.parentNode.removeChild(deleteItem)
-}
+
+    if(document.querySelector('.references__content-creator')){
+
+        const totalReferences = document.querySelectorAll('#new__references')
+         if(totalReferences.length === 0){
+             document.querySelector('.delete__refrences').disabled = true
+         }else if(totalReferences.length > 0){
+             document.querySelector('.delete__refrences').disabled = false
+             let deleteItem = document.querySelector(`.new__references${totalReferences.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }else{
+
+        const totalReferences = document.querySelectorAll('#new__references')
+         if(totalReferences.length === 0){
+             document.querySelector('.delete__refrences').disabled = true
+         }else if(totalReferences.length === 1){
+            console.log('failed to delete')
+            document.querySelector('.delete__refrences').disabled = true
+            
+         }
+         
+         else{
+             document.querySelector('.delete__refrences').disabled = false
+             let deleteItem = document.querySelector(`.new__references${totalReferences.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+
+    }
 
 }
 
 
 
-var original_languages = document.querySelector('.languages__name-creator');
 var b = 1
 function duplicate_languages() {
+    const totalContainer = document.querySelectorAll('#new__language')
+    if(totalContainer.length === 1){
+        b = 2
+    }
+    if(document.querySelector('.languages__name-creator')){
+
+        var original_languages = document.querySelector('.languages__name-creator');
+    }else{
+        var original_languages = document.querySelector('.new__language1');
+
+    }
+
     var clone = original_languages.cloneNode(true); // "deep" clone
     clone.id = "new__language"; // there can only be one element with an ID
-    clone.className = `new__language${b}`
+    clone.className = `languages__content new__language${b}`
     original_languages.parentNode.appendChild(clone);
     b++;
     document.querySelector('.delete__languages').onclick = () => {
@@ -1051,17 +1130,41 @@ function duplicate_languages() {
 }
 
 function changeLanguage(){
-    const totalLanguages = document.querySelectorAll('#new__language')
 
-    if(totalLanguages.length === 0){
-        document.querySelector('.delete__languages').disabled = true
-    }else if(totalLanguages.length > 0){
-        document.querySelector('.delete__languages').disabled = false
+    if(document.querySelector('.languages__name-creator')){
+
+        const totalLanguages = document.querySelectorAll('#new__language')
+    
+        if(totalLanguages.length === 0){
+            document.querySelector('.delete__languages').disabled = true
+        }else if(totalLanguages.length > 0){
+            document.querySelector('.delete__languages').disabled = false
+            
+            const inputLanguages = document.querySelector(`.new__language${totalLanguages.length}`)
+    
+            let languagaName = inputLanguages.querySelector('.languages__creator')
+            languagaName.value = ""
+        }
+    }else{
+        const totalLanguages = document.querySelectorAll('#new__language')
+    
+        if(totalLanguages.length === 0){
+            document.querySelector('.delete__languages').disabled = true
         
-        const inputLanguages = document.querySelector(`.new__language${totalLanguages.length}`)
+        }else if (totalLanguages.length === 1){
+            console.log('cant change initial value')
+            document.querySelector('.delete__languages').disabled = false
+            
+        }
+        else{
+            document.querySelector('.delete__languages').disabled = false
+            
+            const inputLanguages = document.querySelector(`.new__language${totalLanguages.length}`)
+    
+            let languagaName = inputLanguages.querySelector('.languages__creator')
+            languagaName.value = ""
+        }
 
-        let languagaName = inputLanguages.querySelector('.languages__creator')
-        languagaName.value = ""
     }
 
 
@@ -1071,24 +1174,55 @@ document.querySelector('.delete__languages').addEventListener('click', deleteLan
 
 
 function deleteLanguage(){
-    const totalLanguages = document.querySelectorAll('#new__language')
-     if(totalLanguages.length === 0){
-         document.querySelector('.delete__languages').disabled = true
-     }else if(totalLanguages.length > 0){
-         document.querySelector('.delete__languages').disabled = false
-         let deleteItem = document.querySelector(`.new__language${totalLanguages.length}`)
-         deleteItem.parentNode.removeChild(deleteItem)
-}
+
+    if(document.querySelector('.languages__name-creator')){
+
+        const totalLanguages = document.querySelectorAll('#new__language')
+         if(totalLanguages.length === 0){
+             document.querySelector('.delete__languages').disabled = true
+         }else if(totalLanguages.length > 0){
+             document.querySelector('.delete__languages').disabled = false
+             let deleteItem = document.querySelector(`.new__language${totalLanguages.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+
+    }else{
+        const totalLanguages = document.querySelectorAll('#new__language')
+         if(totalLanguages.length === 0){
+             document.querySelector('.delete__languages').disabled = true
+         }else if(totalLanguages.length === 1){
+            console.log('failed to delete')
+            document.querySelector('.delete__languages').disabled = true
+            
+         }
+         
+         else{
+             document.querySelector('.delete__languages').disabled = false
+             let deleteItem = document.querySelector(`.new__language${totalLanguages.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }
 
 }
 
 
-var original_interest = document.querySelector('.interesets__content-creator');
 var r = 1
 function duplicate_interest() {
+    const totalContainer = document.querySelectorAll('#new__intrest')
+    if(totalContainer.length === 1){
+        r = 2
+    }
+    if(document.querySelector('.interesets__content-creator')){
+
+        var original_interest = document.querySelector('.interesets__content-creator');
+    }else{
+        var original_interest = document.querySelector('.new__intrest1');
+
+    }
+
     var clone = original_interest.cloneNode(true); // "deep" clone
     clone.id = "new__intrest"; // there can only be one element with an ID
-    clone.className = `new__intrest${r}`
+    clone.className = `interesets__content new__intrest${r}`
     
     original_interest.parentNode.appendChild(clone);
     r++;
@@ -1103,17 +1237,42 @@ function duplicate_interest() {
 }
 
 function changeIntrest() {
-    const totalIntrest = document.querySelectorAll('#new__intrest')
 
-    if(totalIntrest.length === 0){
-        document.querySelector('.deleteIntrest').disabled = true
-    }else if(totalIntrest.length > 0){
-        document.querySelector('.deleteIntrest').disabled = false
+    if(document.querySelector('.interesets__content-creator')){
+        
+        const totalIntrest = document.querySelectorAll('#new__intrest')
+    
+        if(totalIntrest.length === 0){
+            document.querySelector('.deleteIntrest').disabled = true
+        }else if(totalIntrest.length > 0){
+            document.querySelector('.deleteIntrest').disabled = false
+    
+            const inputIntrestContainer = document.querySelector(`.new__intrest${totalIntrest.length}`)
+    
+            let intrestName = inputIntrestContainer.querySelector('.interest__name-creator')
+            intrestName.value = ""
+        }
+    }else{
 
-        const inputIntrestContainer = document.querySelector(`.new__intrest${totalIntrest.length}`)
+        const totalIntrest = document.querySelectorAll('#new__intrest')
+    
+        if(totalIntrest.length === 0){
+            document.querySelector('.deleteIntrest').disabled = true
+        }else if (totalIntrest.length === 1){
+            console.log('cant change initial value')
+            document.querySelector('.deleteIntrest').disabled = false
+            
+        }
 
-        let intrestName = inputIntrestContainer.querySelector('.interest__name-creator')
-        intrestName.value = ""
+        else{
+            document.querySelector('.deleteIntrest').disabled = false
+    
+            const inputIntrestContainer = document.querySelector(`.new__intrest${totalIntrest.length}`)
+    
+            let intrestName = inputIntrestContainer.querySelector('.interest__name-creator')
+            intrestName.value = ""
+        }
+
     }
 }
 
@@ -1121,25 +1280,53 @@ document.querySelector('.deleteIntrest').addEventListener('click', deleteIntrest
 
 
 function deleteIntrest(){
-    const totalIntrest = document.querySelectorAll('#new__intrest')
-     if(totalIntrest.length === 0){
-         document.querySelector('.deleteIntrest').disabled = true
-     }else if(totalIntrest.length > 0){
-         document.querySelector('.deleteIntrest').disabled = false
-         let deleteItem = document.querySelector(`.new__intrest${totalIntrest.length}`)
-         deleteItem.parentNode.removeChild(deleteItem)
-}
+    if(document.querySelector('.interesets__content-creator')){
+
+        const totalIntrest = document.querySelectorAll('#new__intrest')
+         if(totalIntrest.length === 0){
+             document.querySelector('.deleteIntrest').disabled = true
+         }else if(totalIntrest.length > 0){
+             document.querySelector('.deleteIntrest').disabled = false
+             let deleteItem = document.querySelector(`.new__intrest${totalIntrest.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }else{
+        const totalIntrest = document.querySelectorAll('#new__intrest')
+         if(totalIntrest.length === 0){
+             document.querySelector('.deleteIntrest').disabled = true
+         }else if(totalIntrest.length === 1){
+            console.log('failed to delete')
+            document.querySelector('.deleteIntrest').disabled = true
+            
+         }
+         else{
+             document.querySelector('.deleteIntrest').disabled = false
+             let deleteItem = document.querySelector(`.new__intrest${totalIntrest.length}`)
+             deleteItem.parentNode.removeChild(deleteItem)
+        }
+    }
 
 }
 
 var k = 1;
 
-var original_skills = document.querySelector('.skills__name-creator');
 
 function duplicate_skills() {
+    const totalContainer = document.querySelectorAll('#new__skills')
+    if(totalContainer.length === 1){
+        k = 2
+    }
+
+    if(document.querySelector('.skills__name-creator')){
+
+        var original_skills = document.querySelector('.skills__name-creator');
+    }else{
+        var original_skills = document.querySelector('.new__skills1');
+
+    }
     var clone = original_skills.cloneNode(true); // "deep" clone
     clone.id = "new__skills"; // there can only be one element with an ID
-    clone.className = `new__skills${k}` 
+    clone.className = `skills__content new__skills${k}` 
     k++
     original_skills.parentNode.appendChild(clone);
     document.querySelector('.delete__skills').onclick = () => {
@@ -1152,31 +1339,75 @@ function duplicate_skills() {
 }
 
 function changeSkills(){
-    const totalSkills = document.querySelectorAll('#new__skills')
+    if(document.querySelector('.skills__name-creator')){
 
-    if(totalSkills.length === 0){
-        document.querySelector('.delete__skills').disabled = true
-    }else if(totalSkills.length > 0){
+        const totalSkills = document.querySelectorAll('#new__skills')
+    
+        if(totalSkills.length === 0){
+            document.querySelector('.delete__skills').disabled = true
+        }else if(totalSkills.length > 0){
+    
+            document.querySelector('.delete__skills').disabled = false
+    
+            const inputSkillContainer = document.querySelector(`.new__skills${totalSkills.length}`)
+            
+            let skillsTitle = inputSkillContainer.querySelector('.skills__creator')
+            skillsTitle.value = ""
+        }
+    }else{
 
-        document.querySelector('.delete__skills').disabled = false
-
-        const inputSkillContainer = document.querySelector(`.new__skills${totalSkills.length}`)
-        
-        let skillsTitle = inputSkillContainer.querySelector('.skills__creator')
-        skillsTitle.value = ""
+        const totalSkills = document.querySelectorAll('#new__skills')
+    
+        if(totalSkills.length === 0){
+            document.querySelector('.delete__skills').disabled = true
+        }else if (totalSkills.length === 1){
+            console.log('cant change initial value')
+            document.querySelector('.delete__skills').disabled = false
+            
+        }
+        else{
+    
+            document.querySelector('.delete__skills').disabled = false
+    
+            const inputSkillContainer = document.querySelector(`.new__skills${totalSkills.length}`)
+            
+            let skillsTitle = inputSkillContainer.querySelector('.skills__creator')
+            skillsTitle.value = ""
+        }
     }
+
 }
 
 document.querySelector('.delete__skills').addEventListener('click', deleteSkills)
 function deleteSkills(){
-    const totalSkills = document.querySelectorAll('#new__skills')
-     if(totalSkills.length === 0){
-         document.querySelector('.delete__skills').disabled = true
-     }else if(totalSkills.length > 0){
-         document.querySelector('.delete__skills').disabled = false
-         let deleteItemskills = document.querySelector(`.new__skills${totalSkills.length}`)
-         deleteItemskills.parentNode.removeChild(deleteItemskills)
-}
+
+    if(document.querySelector('.skills__name-creator')){
+
+        const totalSkills = document.querySelectorAll('#new__skills')
+         if(totalSkills.length === 0){
+             document.querySelector('.delete__skills').disabled = true
+         }else if(totalSkills.length > 0){
+             document.querySelector('.delete__skills').disabled = false
+             let deleteItemskills = document.querySelector(`.new__skills${totalSkills.length}`)
+             deleteItemskills.parentNode.removeChild(deleteItemskills)
+        }
+    }else{
+
+        const totalSkills = document.querySelectorAll('#new__skills')
+         if(totalSkills.length === 0){
+             document.querySelector('.delete__skills').disabled = true
+         }else if(totalSkills.length === 1){
+            console.log('failed to delete')
+            document.querySelector('.delete__skills').disabled = true
+            
+         }
+         else{
+             document.querySelector('.delete__skills').disabled = false
+             let deleteItemskills = document.querySelector(`.new__skills${totalSkills.length}`)
+             deleteItemskills.parentNode.removeChild(deleteItemskills)
+        }
+
+    }
 
 }
 /*==================== DARK LIGHT THEME ====================*/ 
@@ -1447,6 +1678,52 @@ function datasaver(){
         certifcateInfo.push(certificate.value)
     })
 
+    let referencesPost = []
+    let referencesName = []
+    let referencesNumber = []
+    let referencesEmail = []
+    
+    let enteredReferencesPost = document.querySelectorAll('.references__post-creator')
+    let enteredReferencesName = document.querySelectorAll('.references__title-creator')
+    let enteredReferencesNumber = document.querySelectorAll('.references__number-creator')
+    let enteredReferencesEamil = document.querySelectorAll('.references__email-creator')
+
+    enteredReferencesPost.forEach(references => {
+        referencesPost.push(references.value)
+    })
+
+    enteredReferencesName.forEach(references => {
+        referencesName.push(references.value)
+    })
+
+    enteredReferencesNumber.forEach(references => {
+        referencesNumber.push(references.value)
+    })
+
+    enteredReferencesEamil.forEach(references => {
+        referencesEmail.push(references.value)
+    })
+
+
+    let languageTitle = []
+    let intrestTitle = []
+    let skillsTitle = []
+
+    let enteredLangugaeTitle = document.querySelectorAll('.languages__creator')
+    let enteredSkillsTitle = document.querySelectorAll('.skills__creator')
+    let enteredIntrestsTitle = document.querySelectorAll('.interest__name-creator')
+
+    enteredLangugaeTitle.forEach(langugae => {
+        languageTitle.push(langugae.value)
+    })
+
+    enteredSkillsTitle.forEach(skill => [
+        skillsTitle.push(skill.value)
+    ])
+
+    enteredIntrestsTitle.forEach(intrest => {
+        intrestTitle.push(intrest.value)
+    })
 
     
 
@@ -1478,7 +1755,14 @@ function datasaver(){
                 experienceinfo,
                 certificateTitle,
                 certificateLink,
-                certifcateInfo
+                certifcateInfo,
+                referencesPost,
+                referencesName,
+                referencesNumber,
+                referencesEmail,
+                languageTitle,
+                skillsTitle,
+                intrestTitle
 
 
 
@@ -1529,7 +1813,15 @@ function datasaver(){
                 experienceinfo,
                 certificateTitle,
                 certificateLink,
-                certifcateInfo
+                certifcateInfo,
+                referencesPost,
+                referencesName,
+                referencesNumber,
+                referencesEmail,
+                languageTitle,
+                skillsTitle,
+                intrestTitle
+
                 })
                 const img = document.querySelector('.home__img')
                 img.setAttribute('src', `${url}`)
@@ -1689,6 +1981,111 @@ function renderData(userCode){
     n++
     })
 
+
+    if(document.querySelector('.references__content-creator')){
+        x = 1
+
+    }else{
+    }
+    let referencesPostLsist = userCode.data().referencesPost
+    let referencesEmailList = userCode.data().referencesEmail
+    let referencesNameList = userCode.data().referencesName
+    let referencesNumberList = userCode.data().referencesNumber
+
+    let referencesFilledData = document.querySelector('.references__container')
+    let refinfo = 0
+    referencesFilledData.innerHTML = ""
+    referencesPostLsist.forEach(post => {
+        referencesFilledData.innerHTML += `
+
+                        <div class="references__content new__references${x}" id = "new__references">
+                        <span class="references__subtitle">
+                            <input type="text" name="" id="" class="references__post-creator" placeholder="Enter Post" value = "${post}">
+                        </span>
+                        <h3 class="references__title"><input type="text" class="references__title-creator" placeholder="Enter Name" value = "${referencesNameList[refinfo]}"></h3>
+                        <ul class="references__contact">
+                            <li><input type="text" name="" id="" class="references__number-creator" placeholder="Enter Number" value = "${referencesNumberList[refinfo]}"></li>
+                            <li><input type="email" name="" id="" class="references__email-creator" placeholder="Enter Email" value = "${referencesEmailList[refinfo]}"></li>
+                        </ul>
+                    </div>
+                                        
+        `
+
+        refinfo = refinfo + 1
+        x++ 
+    })
+
+    if(document.querySelector('.languages__name-creator')){
+        b = 1
+    }else{
+
+    }
+
+    let languageTitleList = userCode.data().languageTitle
+    let langugaeFilledData = document.querySelector('.languages__content-creator')
+    // let langInfo = 0
+    langugaeFilledData.innerHTML = ""
+
+    languageTitleList.forEach(title => {
+        langugaeFilledData.innerHTML += `
+        
+                            <li class="languages__name new__language${b}" id = "new__language">
+                            <span class="languages__circle"></span> <input type="text" name="" id="" class="languages__creator" placeholder="Enter Language Name" value = "${title}">
+                        </li>
+        
+        `
+        b++
+        
+    })
+
+
+    if(document.querySelector('.interesets__content-creator')){
+        r = 1
+    }else{
+
+    }
+
+    let intrestTitleList = userCode.data().intrestTitle
+    let intrestFilledData = document.querySelector('.interests__container-creator')
+    // let langInfo = 0
+    intrestFilledData.innerHTML = ""
+
+    intrestTitleList.forEach(title => {
+        intrestFilledData.innerHTML += `
+        
+                            <div class="interesets__content new__intrest${r}" id = "new__intrest">
+                            <i class="ri-star-line"></i>
+                            <span class="interests__name"><input type="text" name="" id="" class="interest__name-creator" placeholder="Enter Skills" value = "${title}"></span>
+                        </div>
+        
+        `
+        r++
+        
+    })
+
+
+    if(document.querySelector('.skills__name-creator')){
+        k = 1
+    }else{
+
+    }
+
+    let skillsTitleList = userCode.data().skillsTitle
+    let skillsFilledData = document.querySelector('.skills__data')
+    // let langInfo = 0
+    skillsFilledData.innerHTML = ""
+
+    skillsTitleList.forEach(title => {
+        skillsFilledData.innerHTML += `
+        
+                            <li class="skills__name new__skills${k}" id = "new__skills">
+                            <span class="skills__circle"></span> <input type="text" name="" id="" class="skills__creator" placeholder="Enter Interest" value = "${title}">
+                        </li>
+        
+        `
+        k++
+        
+    })
 
 
 }
