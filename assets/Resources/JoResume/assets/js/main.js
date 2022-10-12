@@ -156,6 +156,25 @@ resumeButton.addEventListener('click', () => {
 
 
 creator.addEventListener('click', () => {
+    console.log('hi')
+
+    const toDataURL = url => fetch(url)
+                            
+    .then(response => response.blob())
+                            
+    .then(blob => new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onloadend = () => resolve(reader.result)
+        reader.onerror = reject
+        reader.readAsDataURL(blob)
+    }))
+                          
+                          
+    toDataURL(document.getElementById("image-perfil").src)
+    .then(dataUrl => {
+        document.querySelector('.home__img-creator').src = dataUrl
+    })
+
     load.style.display='block'
     loader()
     document.querySelector('.home-show').style.display='none'
@@ -227,7 +246,6 @@ document.querySelector('.editing-pdf').addEventListener('click', ()=> {
 
 
 
-
 document.getElementById('perfil__input').addEventListener('change', readfichier);
 
 var myImage 
@@ -238,10 +256,12 @@ function readfichier(){
   
     let reader = new FileReader();
   
-    reader.readAsDataURL(file);
-  
-    console.log(reader.result);
-    //  document.getElementById("image-perfil").src = reader.result;
+   
+    reader.onloadend = function() {
+        console.log('RESULT', reader.result)
+         document.getElementById("image-perfil").src = reader.result;
+      }
+      reader.readAsDataURL(file);
     //   document.querySelector(".home__img-creator").src = reader.result;
   
     //set the image to template
@@ -264,10 +284,49 @@ function readfichier(){
                       
                       const ref = firebase.storage().ref()
                       const metadata = {
-                          contentType: 'image/jpg'
+                          contentType: file.type
                           };
                       const task = ref.child(imagename).put(file, metadata);
-                      task
+                      task.on('state_changed', function(snapshot){
+                          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                          progress = Math.round(progress, 2)
+                          console.log(`File uploaded : ${progress}%`)
+                          popup(`File uploaded : ${progress}%, Please Wait to update`)
+                          document.querySelector('.resume__left').click()
+
+                          if(progress === 100){
+                            document.querySelector('#home__title-creator').focus()
+                            document.querySelector('body').click()
+
+
+                            setTimeout(() => {
+                                var gfg_down =
+                                document.querySelectorAll(".popup");
+                                gfg_down.forEach(value => {
+
+                                    value.parentNode.removeChild(value);
+                                })
+                                
+                            }, 999);
+                          }else if(progress > 100){
+                            document.querySelector('#home__title-creator').focus()
+                            document.querySelector('body').click()
+
+
+                            // setTimeout(() => {
+                                var gfg_down =
+                                document.querySelector(".popup");
+                                gfg_down.parentNode.removeChild(gfg_down);
+                          }
+                          else{
+                            document.querySelector('.resume__left').click()
+
+                          }
+                        })
+                        document.querySelector('.resume__left').click()
+
+                        
+                        task
                       .then(snapshot => snapshot.ref.getDownloadURL())
                       .then(newurl => {
                           console.log(`New Url = ${newurl}`)
@@ -283,16 +342,32 @@ function readfichier(){
                               })
                         }
                             document.getElementById("image-perfil").src = newurl;
-                            document.querySelector(".home__img-creator").src = newurl;
+                            // document.querySelector(".home__img-creator").src = newurl;
                        
   
                             document.querySelector(".home__img").src = newurl;
 
 
+                            setTimeout(() => {
+                                
+                                const Toast = Swal.mixin({
+                                    toast: true,
+                                    position: 'top-end',
+                                    showConfirmButton: false,
+                                    timer: 2700,
+                                    timerProgressBar: true,
+                                    didOpen: (toast) => {
+                                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                    }
+                                  })
+                                  
+                                  Toast.fire({
+                                    icon: 'success',
+                                    title: 'File Uploaded'
+                                  })
+                            }, 720);
 
-                            console.log('hi')
-
-                           
                             
                             
                       })
@@ -317,7 +392,7 @@ function readfichier(){
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3639,
+        timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -326,8 +401,8 @@ function readfichier(){
       })
       
       Toast.fire({
-        icon: 'success',
-        title: 'File Uploaded, Now Drag Down'
+        icon: 'info',
+        title: 'Please Wait, while File is uploading'
       })
 
 }
@@ -1673,7 +1748,7 @@ function uploaderImage() {
           const img = document.querySelector('.home__img')
           img.setAttribute('src', `${url}`)
           document.getElementById("image-perfil").src = url;
-          document.querySelector(".home__img-creator").src = url;
+        //   document.querySelector(".home__img-creator").src = url;
           
           document.querySelector(".home__img").src = url;
         console.log(url);
@@ -1802,10 +1877,7 @@ function datasaver(){
         intrestTitle.push(intrest.value)
     })
 
-    setTimeout(() => {
-        console.log(myImage)
-        
-    }, 10000);
+   
 
     let url =  myImage;
     if(url === undefined){
@@ -1890,13 +1962,15 @@ function datasaver(){
                         const img = document.querySelector('.home__img')
                         img.setAttribute('src', `${url}`)
                         document.getElementById("image-perfil").src = url;
-                        document.querySelector(".home__img-creator").src = url;
+                        // document.querySelector(".home__img-creator").src = url;
 
                       
           
                         document.querySelector(".home__img").src = url;
                         
                         console.log(url);
+
+
                     })
                 }
             }
@@ -1907,6 +1981,23 @@ function datasaver(){
                 }
 
     })
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3639,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'info',
+        title: 'Data Successfully Saved'
+      })
 }
 
 
@@ -1919,7 +2010,7 @@ document.querySelector('.save').addEventListener('click', datasaver)
 
 function renderData(userCode){
     let uploadImage = document.querySelector('#image-perfil')
-    let setImage = document.querySelector('.home__img-creator')
+    // let setImage = document.querySelector('.home__img-creator')
    
     let enteredName = document.querySelector('#home__title-creator')
     let enteredProfession = document.querySelector('#home__profession-creator')
@@ -1943,9 +2034,9 @@ function renderData(userCode){
     enteredTwitter.value = userCode.data().enteredTwitter
     enteredBio.innerText = userCode.data().enteredBio
     uploadImage.src = `${userCode.data().url}`
-    setImage.src = `${userCode.data().url}`
+    // setImage.src = `${userCode.data().url}`
     document.getElementById("image-perfil").src = userCode.data().url;
-    document.querySelector(".home__img-creator").src = userCode.data().url;
+    // document.querySelector(".home__img-creator").src = userCode.data().url;
 
     
           
