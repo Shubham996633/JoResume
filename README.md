@@ -1,7 +1,7 @@
 # JoResume__Responsive__Resume__App
 
 
- ### JoResume Responsive Resume App Based On HTML , CSS , JavaScript with full Responsive and Multi-Device view Support <i><b>( Size Greator Than 810px )</i></b><br><br>
+ ### JoResume Responsive Resume App Based on HTML, CSS, JavaScript with full Responsive and Multi-Device view Support (Size Greater Than 963px)</i></b><br><br>
  
  ## This App Lets you to create your custome resume and you also get the option of <i><b>Dark-Mode</i></b> for your resume.<br>
  
