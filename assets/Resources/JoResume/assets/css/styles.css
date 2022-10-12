@@ -1,6 +1,6 @@
             /* Google Fonts */
 
-            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
             /* Variable CSS */
 
@@ -375,54 +375,6 @@ img{
     
 }
 
-.nav__logo,
-.nav__toggle{
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-}
-
-.nav__toggle{
-    font-size: 1.2rem;
-    cursor: pointer;
-
-}
-
-.nav__item{
-    text-align: center;
-
-}
-
-.nav__list{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-.nav__link{
-    display: flex;
-    flex-direction: column;
-    font-size: var(--smaller-font-size);
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-}
-
-.nav__link:hover{
-    color: var(--text-color);
-}
-
-.nav__icon{
-    font-size: 1.2rem;
-    margin-bottom: var(--mb-1);
-
-}
-
-.show-menu{
-    bottom: var(--header-height);
-}
-
-.active-link{
-    color: var(--title-color);
-}
 
 .home{
     position: relative;
@@ -632,31 +584,7 @@ img{
     margin-bottom: .25rem;
 }
 
-.scrolltop{
-    position: fixed;
-    right: 1rem;
-    bottom: -20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .3rem;
-    background-color: var(--container-color-alt);
-    border-radius: .4rem;
-    z-index: var(--z-tooltip);
-    transition: .4s;
-    visibility: hidden;
-}
 
-
-.scrolltop__icon{
-    font-size: 1.2rem;
-    color: var(--text-color);
-}
-
-.show-scroll{
-    visibility: visible;
-    bottom: 5rem;
-}
 
 
 
@@ -915,15 +843,20 @@ button{
 
 
 .home-show{
-    background: linear-gradient(170deg,
+    /* background: linear-gradient(170deg,
                                         hsl(0, 0%, 22%) 0%,
-                                        hsl(0,0%,6%) 30%);
+                                        hsl(0,0%,6%) 30%); */
+
+    background: var(--container-color-alt);
+    color: black;
 
     padding-bottom: 0%;
     padding: 4.5rem 1rem;
     font-size: var(--h1-font-size);
     margin-bottom: 4.5rem;
 }
+
+
 .home__container-show{
     padding-top: 4rem;
     row-gap: 3.5rem;
@@ -1078,61 +1011,7 @@ button{
 .footer__container{
     row-gap: 2.5rem;
 }
-.footer__logo{
-    color: var(--first-color);
-    font-size: var(--h3-font-size);
-    font-weight: var(--font-semi-bold);
-    display: inline-flex;
-    align-items: center;
-    column-gap: .25rem;
-    margin-bottom: .75rem;
-}
-.footer__logo i {
-    font-size: 1.25rem;
-}
-.footer__description,
-.footer__link{
-    font-size: var(--small-font-size);
-    font-weight: var(--font-medium);
-}
-.footer__content,
-.footer__links{
-    display: grid;
-}
-.footer__content{
-    grid-template-columns: repeat(2,max-content);
-    gap: 2.5rem 4rem;
-}
-.footer__title{
-    font-size: var(--h3-font-size);
-    margin-bottom: 1rem;
-}
-.footer__links{
-    row-gap: .5rem;
 
-}
-.footer__link{
-    color: var(--text-color);
-    transition: .3s;
-}
-.footer__link:hover{
-    color: var(--title-color);
-
-}
-.footer__social{
-    display: flex;
-    column-gap: 1rem;
-
-}
-.footer__social-link{
-    font-size: 1.25rem;
-    color: var(--text-color);
-    transition: .3s;
-}
-.footer__social-link:hover{
-    color: var(--title-color);
-
-}
 
 .footer__info,
 .footer__privacy{
@@ -1203,7 +1082,7 @@ button{
 @media screen and (max-width: 809px) {
     .mobile{
         display: block;
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
     }
     .icons-image{
         margin-top: -3rem;
@@ -1387,24 +1266,6 @@ button{
 
 @media screen and (min-width:1023px) {
   
-    .subscribe__container{
-        padding: 4rem 10rem 4.5rem;
-        border-radius: 2rem;
-        border: 12px solid var(--first-color-light);
-       
-    }
-    .subscribe__title{
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-
-    }
-    .subscribe__description{
-        font-size: var(--normal-font-size);
-        padding: 0 8rem ;
-    }
-    .subscribe__button{
-        font-size: var(--normal-font-size);
-    }
     .footer__content{
         grid-template-columns: repeat(4,max-content);
     }
@@ -1420,11 +1281,7 @@ button{
         justify-content: space-between;
         padding-bottom: 2rem;
     }
-    .subscribe,
-    .footer{
-    margin-left: 7.5rem;
-    margin-right: 7.5rem;
-    }
+  
   
 
 }
@@ -1483,4 +1340,53 @@ body{
     background-color: rgb(110, 110, 110);
     color: rgb(161, 159, 159);
 
+}
+.home__data-show{
+    margin-top: -5.4rem;
+}
+
+button{
+    font-family: var(--body-font);
+}
+
+.username{
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.controls{
+    justify-content: right;
+    justify-self: right;
+    
+   display: flex;
+   margin-top: -3.6rem;
+   margin-right: 15rem;
+    gap: 3rem;
+   
+}
+
+.dark-theme .logout, .logout{
+    background: #c44040;
+}
+.logout:hover, .logout:active{
+    background: #c41f1f;
+
+}
+
+.dark-theme .logout:hover, .dark-theme .logout:active{
+    background: #c41f1f;
+
+}
+
+.home__description-show,
+.home__title-show,
+.username{
+    color: black;
+}
+
+.dark-theme .home__description-show,
+.dark-theme .home__title-show,
+.dark-theme .username{
+    color: white;
 }

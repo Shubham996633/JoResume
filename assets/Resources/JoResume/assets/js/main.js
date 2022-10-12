@@ -152,6 +152,12 @@ resumeButton.addEventListener('click', () => {
         icon: 'success',
         title: 'Download Initiated'
       })
+      document.querySelector('.swal2-popup').style.background = '#1b1a1a'
+        document.querySelector('.swal2-popup').style.color = 'white'
+        document.querySelector('.swal2-timer-progress-bar').style.background = '#bebcc5'
+        document.querySelector('.swal2-success-circular-line-left').style.background = '#1b1a1a' 
+        document.querySelector('.swal2-success-circular-line-right').style.background = '#1b1a1a' 
+        document.querySelector('.swal2-success-fix').style.background = '#1b1a1a' 
 })
 
 
@@ -203,6 +209,12 @@ creator.addEventListener('click', () => {
         icon: 'success',
         title: 'Succesfully Created'
       })
+      document.querySelector('.swal2-popup').style.background = '#1b1a1a'
+    document.querySelector('.swal2-popup').style.color = 'white'
+        document.querySelector('.swal2-timer-progress-bar').style.background = '#bebcc5'
+        document.querySelector('.swal2-success-circular-line-left').style.background = '#1b1a1a' 
+        document.querySelector('.swal2-success-circular-line-right').style.background = '#1b1a1a' 
+        document.querySelector('.swal2-success-fix').style.background = '#1b1a1a' 
    
    
 })
@@ -237,6 +249,9 @@ document.querySelector('.editing-pdf').addEventListener('click', ()=> {
         icon: 'info',
         title: 'Data Reterived'
       })
+        document.querySelector('.swal2-popup').style.background = '#1b1a1a'
+        document.querySelector('.swal2-popup').style.color = 'white'
+        document.querySelector('.swal2-timer-progress-bar').style.background = '#bebcc5'
 
     
 
@@ -251,148 +266,218 @@ document.getElementById('perfil__input').addEventListener('change', readfichier)
 var myImage 
 function readfichier(){
     let file = document.getElementById("perfil__input").files[0];
+    const filename = file.name
 
-    console.log(file);
-  
-    let reader = new FileReader();
-  
-   
-    reader.onloadend = function() {
-        console.log('RESULT', reader.result)
-         document.getElementById("image-perfil").src = reader.result;
-      }
-      reader.readAsDataURL(file);
-    //   document.querySelector(".home__img-creator").src = reader.result;
-  
-    //set the image to template
-  
-    reader.onloadend = function () {
-      
+    const extension = filename.split('.').pop();
 
-      auth.onAuthStateChanged(user => {
-          if(user){
-              fs.collection(user.uid).doc('_963').get().then(snapshot => {
-                  console.log(snapshot.data())
-                  // if(snapshot.data() != undefined){
-  
-                      // if(snapshot.data().name){
-                          console.log('yo')
-      
-                          let imagename = user.uid + '_963'
-                      
-                     
-                      
-                      const ref = firebase.storage().ref()
-                      const metadata = {
-                          contentType: file.type
-                          };
-                      const task = ref.child(imagename).put(file, metadata);
-                      task.on('state_changed', function(snapshot){
-                          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                          progress = Math.round(progress, 2)
-                          console.log(`File uploaded : ${progress}%`)
-                          popup(`File uploaded : ${progress}%, Please Wait to update`)
-                          document.querySelector('.resume__left').click()
+    const allowedExtensions = ['jpg', 'jpeg', 'png'];
+     
+    if (!allowedExtensions.includes(extension)) {
+       
+        swalhat()
+        
+    }else{
 
-                          if(progress === 100){
-                            document.querySelector('#home__title-creator').focus()
-                            document.querySelector('body').click()
-
-
-                            setTimeout(() => {
-                                var gfg_down =
-                                document.querySelectorAll(".popup");
-                                gfg_down.forEach(value => {
-
-                                    value.parentNode.removeChild(value);
-                                })
-                                
-                            }, 999);
-                          }else if(progress > 100){
-                            document.querySelector('#home__title-creator').focus()
-                            document.querySelector('body').click()
-
-
-                            // setTimeout(() => {
-                                var gfg_down =
-                                document.querySelector(".popup");
-                                gfg_down.parentNode.removeChild(gfg_down);
-                          }
-                          else{
-                            document.querySelector('.resume__left').click()
-
-                          }
-                        })
-                        document.querySelector('.resume__left').click()
-
-                        
-                        task
-                      .then(snapshot => snapshot.ref.getDownloadURL())
-                      .then(newurl => {
-                          console.log(`New Url = ${newurl}`)
-                          myImage = newurl
-
-                        if(snapshot.data() != undefined){
-  
-                              console.log('I Am here')
-                              fs.collection(user.uid).doc('_' + 963).update({
-                                  url: newurl,
-                                  name: imagename
-                                  
-                              })
-                        }
-                            document.getElementById("image-perfil").src = newurl;
-                            // document.querySelector(".home__img-creator").src = newurl;
-                       
-  
-                            document.querySelector(".home__img").src = newurl;
-
-
-                            setTimeout(() => {
-                                
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 2700,
-                                    timerProgressBar: true,
-                                    didOpen: (toast) => {
-                                      toast.addEventListener('mouseenter', Swal.stopTimer)
-                                      toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                    }
-                                  })
-                                  
-                                  Toast.fire({
-                                    icon: 'success',
-                                    title: 'File Uploaded'
-                                  })
-                            }, 720);
-
-                            
-                            
-                      })
-                  // }
-                  // }
+        console.log(file);
+        if(file === undefined){
+            console.log('hi')
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3639,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
               })
-          
-  
+              
+              Toast.fire({
+                icon: 'info',
+                title: 'File Not Uploaded'
+              })
+                document.querySelector('.swal2-popup').style.background = '#1b1a1a'
+                document.querySelector('.swal2-popup').style.color = 'white'
+                document.querySelector('.swal2-timer-progress-bar').style.background = '#bebcc5'
+    
+        }else{
+    
+        
+        let reader = new FileReader();
+      
+       
+        reader.onloadend = function() {
+            console.log('RESULT', reader.result)
+             document.getElementById("image-perfil").src = reader.result;
           }
-      })
-    };
+          reader.readAsDataURL(file);
+      
+        //   document.querySelector(".home__img-creator").src = reader.result;
+      
+        //set the image to template
+      
+        reader.onloadend = function () {
+          
     
-    // const ref = firebase.storage().ref()
-    // const metadata = {
-    //     contentType: 'image/jpg'
-    //     };
-    // const task = ref.child(name).put(file, metadata);
+          auth.onAuthStateChanged(user => {
+              if(user){
+                  fs.collection(user.uid).doc('_963').get().then(snapshot => {
+                      console.log(snapshot.data())
+                      // if(snapshot.data() != undefined){
+      
+                          // if(snapshot.data().name){
+                              console.log('yo')
+          
+                              let imagename = user.uid + '_963'
+                          
+                         
+                          
+                          const ref = firebase.storage().ref()
+                          const metadata = {
+                              contentType: file.type
+                              };
+                          const task = ref.child(imagename).put(file, metadata);
+                          task.on('state_changed', function(snapshot){
+                              var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                              progress = Math.round(progress, 2)
+                              console.log(`File uploaded : ${progress}%`)
+                              popup(`File uploaded : ${progress}%, Please Wait to update`)
+                              document.querySelector('.resume__left').click()
+    
+                              if(progress === 100){
+                                document.querySelector('#home__title-creator').focus()
+                                document.querySelector('body').click()
     
     
+                                setTimeout(() => {
+                                    var gfg_down =
+                                    document.querySelectorAll(".popup");
+                                    gfg_down.forEach(value => {
+    
+                                        value.parentNode.removeChild(value);
+                                    })
+                                    
+                                }, 999);
+                              }else if(progress > 100){
+                                document.querySelector('#home__title-creator').focus()
+                                document.querySelector('body').click()
+    
+    
+                                // setTimeout(() => {
+                                    var gfg_down =
+                                    document.querySelector(".popup");
+                                    gfg_down.parentNode.removeChild(gfg_down);
+                              }
+                              else{
+                                document.querySelector('.resume__left').click()
+    
+                              }
+                            })
+                            document.querySelector('.resume__left').click()
+    
+                            
+                            task
+                          .then(snapshot => snapshot.ref.getDownloadURL())
+                          .then(newurl => {
+                              console.log(`New Url = ${newurl}`)
+                              myImage = newurl
+    
+                            if(snapshot.data() != undefined){
+      
+                                  console.log('I Am here')
+                                  fs.collection(user.uid).doc('_' + 963).update({
+                                      url: newurl,
+                                      name: imagename
+                                      
+                                  })
+                            }
+                                document.getElementById("image-perfil").src = newurl;
+                                // document.querySelector(".home__img-creator").src = newurl;
+                           
+      
+                                document.querySelector(".home__img").src = newurl;
+    
+    
+                                setTimeout(() => {
+                                    
+                                    const Toast = Swal.mixin({
+                                        toast: true,
+                                        position: 'top-end',
+                                        showConfirmButton: false,
+                                        timer: 2700,
+                                        timerProgressBar: true,
+                                        didOpen: (toast) => {
+                                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                        }
+                                      })
+                                      
+                                      Toast.fire({
+                                        icon: 'success',
+                                        title: 'File Uploaded'
+                                      })
+    
+                                      document.querySelector('.swal2-popup').style.background = '#1b1a1a'
+                                        document.querySelector('.swal2-popup').style.color = 'white'
+                                        document.querySelector('.swal2-timer-progress-bar').style.background = '#bebcc5'
+                                        document.querySelector('.swal2-success-circular-line-left').style.background = '#1b1a1a' 
+                                        document.querySelector('.swal2-success-circular-line-right').style.background = '#1b1a1a' 
+                                        document.querySelector('.swal2-success-fix').style.background = '#1b1a1a' 
+                                }, 720);
+    
+                                
+                                
+                          })
+                      // }
+                      // }
+                  })
+              
+      
+              }
+          })
+        };
+        
+        // const ref = firebase.storage().ref()
+        // const metadata = {
+        //     contentType: 'image/jpg'
+        //     };
+        // const task = ref.child(name).put(file, metadata);
+        
+        
+    
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          
+          Toast.fire({
+            icon: 'info',
+            title: 'Please Wait, while File is uploading'
+          })
+    
+          document.querySelector('.swal2-popup').style.background = '#1b1a1a'
+            document.querySelector('.swal2-popup').style.color = 'white'
+            document.querySelector('.swal2-timer-progress-bar').style.background = '#bebcc5'
+        }
+    }
 
+
+}
+
+function swalhat(){
     const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
         showConfirmButton: false,
-        timer: 3000,
+        timer: 4500,
         timerProgressBar: true,
         didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -401,10 +486,10 @@ function readfichier(){
       })
       
       Toast.fire({
-        icon: 'info',
-        title: 'Please Wait, while File is uploading'
+        icon: 'error',
+        title: 'File Not Supported, Please Upload only Audio Files'
       })
-
+    
 }
 
 
@@ -1589,25 +1674,6 @@ themeswitchButton.addEventListener('click', () => {
 })
 
 
-var widths = [0, 809, 3840];
-
-function resizeFn() {
-    if (window.innerWidth<widths[1]) {
-       
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Your Screen Size must be greator than 810px for editing',
-            footer: 'Screen size below than 810px Allowed to see what we made finally'
-          })
-
-
-
-
-    }
-}
-// window.onresize = resizeFn;
-// resizeFn();
 
 
 function happy(){
@@ -1682,6 +1748,7 @@ function logout() {
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
+            datasaver()
 
             Swal.fire(
                
@@ -1700,13 +1767,13 @@ function logout() {
             document.querySelector('.swal2-success-fix').style.background = '#1b1a1a'
             document.querySelector('.swal2-success-fix').style.color = '#white'
             console.log('Data saved and signing off')
-            alert('Data saved and signing off')
+
             //   datasaver()
             setTimeout(() => {
             auth.signOut();
 
             location = '../../../index.html'
-        }, 2100);
+        }, 2400);
         } else if (result.isDenied) {
             Swal.fire(
                 'Data not Saved & Signing off!',
@@ -1724,6 +1791,7 @@ function logout() {
             auth.signOut();
 
             location = '../../../index.html'
+
         }, 963);
         }
       })
@@ -1998,6 +2066,9 @@ function datasaver(){
         icon: 'info',
         title: 'Data Successfully Saved'
       })
+      document.querySelector('.swal2-popup').style.background = '#1b1a1a'
+        document.querySelector('.swal2-popup').style.color = 'white'
+        document.querySelector('.swal2-timer-progress-bar').style.background = '#bebcc5'
 }
 
 
