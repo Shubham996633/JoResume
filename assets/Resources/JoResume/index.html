@@ -25,6 +25,15 @@
                 <!-- CSS -->
 
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <script type="text/javascript">
+        function preventBack() {
+            window.history.forward(); 
+        }
+          
+        setTimeout("preventBack()", 0);
+          
+        window.onunload = function () { null };
+    </script>
 
     <title>JoResume Responsive Resume Builder</title>
   </head>
@@ -90,7 +99,7 @@
                                 <img src="assets/img/perfil.jpg" alt="" class="home__img" id ='image-perfil'>
                                 <label  class="label">
                                 <input type="file" name="" id="perfil__input" class = "uploadImage">
-                                <span>Select A File</span>
+                                <span>Select A Image</span>
                                 </label>
                                 <h1 class="home__title"><input type="text" name="" id="home__title-creator" placeholder=" Enter Name "></h1>
                                 <h3 class="home__profession "><input type="text" name="" id="home__profession-creator" placeholder="Enter Profession"></h3>
@@ -354,7 +363,7 @@
                             </div>
                         </div>
     
-                        <i class='bx bx-moon change-theme' title="Theme" id="theme-button" ></i>
+                        <i class='bx bx-moon change-theme' title="Switch the Theme" id="theme-button" ></i>
                         
                         <i class='bx bx-arrow-back editing-pdf' title="Back To Editing" id ="editing"></i>
     

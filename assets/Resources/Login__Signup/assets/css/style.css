@@ -322,3 +322,12 @@ button{
     transform: scale(1.5);
 
 }
+
+button:hover{
+    transition: .3s;
+}
+button:active{
+    transform: scale(0.81);
+    opacity: .9;
+}
+

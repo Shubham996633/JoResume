@@ -122,7 +122,7 @@ loginForm.addEventListener('submit', e => {
     const loginPassword = loginForm['loginPassword'].value
     auth.signInWithEmailAndPassword(loginEmail, loginPassword).then(() => {
         console.log("User Login Successfull")
-        location = `../JoResume/index.html`
+        window.location = `../JoResume/index.html`
     }).catch(err => {
         console.log(err.message)
         const Toast = Swal.mixin({
@@ -171,6 +171,8 @@ function resizeFns() {
       
 
       document.querySelector('.login').style.transform = 'scale(0)'
+      document.querySelector('.swal2-popup').style.background = `#212121`
+      document.querySelector('.swal2-popup').style.color = 'white'
       
 
     
@@ -179,6 +181,16 @@ function resizeFns() {
 
 
   }else{
+    if(document.querySelector('.swal2-popup')){
+
+      let popupswal = document.querySelector('.swal2-popup')
+      let popupswalContainer = document.querySelector('.swal2-container')
+
+      popupswal.parentNode.removeChild(popupswal)
+      popupswalContainer.parentNode.removeChild(popupswalContainer)
+     
+    }
+
 
       document.querySelector('.login').style.transform = 'scale(1)'
   }

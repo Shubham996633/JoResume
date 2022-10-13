@@ -1730,6 +1730,27 @@ auth.onAuthStateChanged(user => {
         document.querySelector('.swal2-timer-progress-bar').style.background = '#bebcc5'
     }else{
         console.log('User is Sign Out')
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            confirmButtonColor: 'red',
+            allowOutsideClick: false,
+            
+            confirmButtonText: 'Close',
+            text: 'It Seems no User is Sign, Please First Sign In',
+            footer: 'If user has Sign In and showing this error Contact Developer'
+          }).then((result) => {
+            if (result.isConfirmed) {
+             
+              location = `../../../index.html`
+            }
+          })
+
+
+        document.querySelector('.app').style.transform = 'scale(0)'
+        document.querySelector('.main').style.transform = 'scale(0)'
+        document.querySelector('.swal2-popup').style.background = `#212121`
+        document.querySelector('.swal2-popup').style.color = 'white'
        
 
         
@@ -2415,3 +2436,25 @@ function displayContent(){
 
 displayContent()
 
+
+
+window.history.pushState(null, null, window.location.href);
+window.onpopstate = function () {
+    window.history.go(1);
+};
+
+document.querySelectorAll('#addmore').forEach(button => {
+    button.setAttribute('title', 'Add More')
+    button.style.cursor = 'pointer'
+})
+
+document.querySelectorAll('#delete').forEach(button => {
+    button.setAttribute('title', 'Delete Last')
+    button.style.cursor = 'pointer'
+
+})
+
+document.querySelector('.label').setAttribute('title', 'Select a Image')
+document.querySelector('.logout').setAttribute('title', 'Logout')
+document.querySelector('.save').setAttribute('title', 'Save Your Work')
+document.querySelector('.docs').setAttribute('title', 'Need Help ? Read Docs')
