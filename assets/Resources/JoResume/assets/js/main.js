@@ -1748,6 +1748,7 @@ auth.onAuthStateChanged(user => {
 
 
         document.querySelector('.app').style.transform = 'scale(0)'
+        document.querySelector('.footer').style.transform = 'scale(0)'
         document.querySelector('.main').style.transform = 'scale(0)'
         document.querySelector('.swal2-popup').style.background = `#212121`
         document.querySelector('.swal2-popup').style.color = 'white'
