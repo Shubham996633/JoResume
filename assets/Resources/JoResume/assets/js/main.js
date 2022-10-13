@@ -485,7 +485,7 @@ function swalhat(){
       
       Toast.fire({
         icon: 'error',
-        title: 'File Not Supported, Please Upload only Audio Files'
+        title: 'File Not Supported, Please Upload only Image Files'
       })
     
 }

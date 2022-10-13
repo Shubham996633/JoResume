@@ -1,2 +1,7 @@
-
- */.popup{color:#fff;background:rgba(0,0,0,.8);opacity:1;padding:20px;border-radius:3px;white-space:nowrap;display:flex;align-items:center;justify-content:center;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}
+/**
+ * Minified by jsDelivr using clean-css v4.2.4.
+ * Original file: /gh/ohno/popup.js@1.0.1/popup.css
+ *
+ * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
+ */
+.popup{color:#fff;background:rgba(0,0,0,.8);opacity:1;padding:20px;border-radius:3px;white-space:nowrap;display:flex;align-items:center;justify-content:center;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)}
