@@ -54,8 +54,7 @@
 
 <br> 
 
-   ### &ensp;&ensp;&ensp;&ensp; For Example : <a href = "https://github.com/Shubham996633/JoResume__Responsive__Resume__App/blob/main/assets/Docs/Docs.md">
- https:// instagram.com /username</a> ,  
+   ### &ensp;&ensp;&ensp;&ensp; For Example : <a href = "https://github.com/Shubham996633/JoResume__Responsive__Resume__App/blob/main/assets/Docs/Docs.md"> https:// instagram.com /username</a> ,  
  here we see the base url and user-name after slash so you just need to type that user-name.
 
 <br>
