@@ -1,12 +1,17 @@
 # JoResume 
 
  ### JoResume lets you to Create Your Resume with customization as you want
+ <br>
+
 
  ### Maker your Resume with accessibility at any where , Build your own Resume with custom Themes and customization
+ <br>
+
 
 ![image](https://user-images.githubusercontent.com/65014926/195518123-b334a67c-288d-4620-96ed-c6b442107d1e.png)
 
 
+ <br>
 
 
 
