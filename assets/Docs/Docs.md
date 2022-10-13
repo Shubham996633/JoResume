@@ -13,7 +13,7 @@
 
 
 
-## To Visit JoResume Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume</a> 
+## To Visit JoResume Click Here : <a href = "#">JoResume</a> 
 
 
 
@@ -60,7 +60,7 @@
 
 <br> 
 
-   ### &ensp;&ensp;&ensp;&ensp; For Example : <a href = "https://github.com/Shubham996633/JoResume__Responsive__Resume__App/blob/main/assets/Docs/Docs.md"> https:// instagram.com /username</a> , here we see the base url and user-name after slash so you just need to type that user-name.
+   ### &ensp;&ensp;&ensp;&ensp; For Example : <a href = "https://github.com/Shubham996633/JoResume/blob/main/assets/Docs/Docs.md"> https:// instagram.com /username</a> , here we see the base url and user-name after slash so you just need to type that user-name.
 
 <br>
 

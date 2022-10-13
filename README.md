@@ -17,11 +17,11 @@
 
 
 
-## To Visit JoResume Click Here : <a href = "https://shubham996633.github.io/JoResume__Responsive__Resume__App/">JoResume</a> 
+## To Visit JoResume Click Here : <a href = "#">JoResume</a> 
 
 
 
-## To Read Docs Click Here : <a href = "https://github.com/Shubham996633/JoResume__Responsive__Resume__App/blob/main/assets/Docs/Docs.md">JoResume Docs</a> 
+## To Read Docs Click Here : <a href = "https://github.com/Shubham996633/JoResume/blob/main/assets/Docs/Docs.md">JoResume Docs</a> 
 
 
 
