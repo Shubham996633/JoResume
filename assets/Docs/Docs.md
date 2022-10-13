@@ -2,7 +2,7 @@
 
  ### JoResume lets you to Create Your Resume with customization as you want
 
- #### Maker your Resume with accessibility at any where , Build your own Resume with custom Themes and customization
+ ### Maker your Resume with accessibility at any where , Build your own Resume with custom Themes and customization
 
 ![image](https://user-images.githubusercontent.com/65014926/195518123-b334a67c-288d-4620-96ed-c6b442107d1e.png)
 
@@ -50,11 +50,11 @@
 
 <br>
 
-#### &ensp;&ensp;&ensp;&ensp; Just type your user name as base url will be automatically added to PDF you just need to add Main user name of your social Handle.  
+### &ensp;&ensp;&ensp;&ensp; Just type your user name as base url will be automatically added to PDF you just need to add Main user name of your social Handle.  
 
 <br> 
 
-   #### &ensp;&ensp;&ensp;&ensp; For Example : <a href = "">https://instagram.com/username</a> ,  here we see the base url and user-name after slash so you just need to type that user-name.
+   ### &ensp;&ensp;&ensp;&ensp; For Example : <a href = "">https://instagram.com/username</a> ,  here we see the base url and user-name after slash so you just need to type that user-name.
 
 <br>
 
@@ -79,7 +79,7 @@
 
 <br>
 
-#### &ensp;&ensp;&ensp;&ensp;  You need to fill the field and note in link section please fill the url with <i>http or https</i> otherwise app will takes as internal link.
+### &ensp;&ensp;&ensp;&ensp;  You need to fill the field and note in link section please fill the url with <i>http or https</i> otherwise app will takes as internal link.
 
 <br>
 
@@ -87,7 +87,7 @@
 
 <br>
 
-####  &ensp;&ensp;&ensp;&ensp;When the user click on Delete Last Button The Last item will get Deleted From the page 
+###  &ensp;&ensp;&ensp;&ensp;When the user click on Delete Last Button The Last item will get Deleted From the page 
 <br>
 
 ## 6) Genrating PDF
@@ -99,7 +99,7 @@
 
 <br>
 
-#### &ensp;&ensp;&ensp;&ensp; Just Click On The Create Button Spin then The Resume Will Created 
+### &ensp;&ensp;&ensp;&ensp; Just Click On The Create Button Spin then The Resume Will Created 
 
 <br>
 
@@ -111,7 +111,7 @@
 
 <br>
 
-#### &ensp;&ensp;&ensp;&ensp; Just Click On Download Icon for Your Resume to downloaded in PDF format and if you want to edit more just click on Back Arrow 
+### &ensp;&ensp;&ensp;&ensp; Just Click On Download Icon for Your Resume to downloaded in PDF format and if you want to edit more just click on Back Arrow 
 
 <br>
 
@@ -123,7 +123,7 @@
 
 <br>
 
-#### &ensp;&ensp;&ensp;&ensp; The Mode Selected at the time of Initiating the Download in that mode your Resume PDF will be downloaded 
+### &ensp;&ensp;&ensp;&ensp; The Mode Selected at the time of Initiating the Download in that mode your Resume PDF will be downloaded 
 
 
 <br>

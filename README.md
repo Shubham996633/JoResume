@@ -2,7 +2,7 @@
 
  ### JoResume lets you to Create Your Resume with customization as you want
 
- #### Maker your Resume with accessibility at any where , Build your own Resume with custom Themes and customization
+ ### Maker your Resume with accessibility at any where , Build your own Resume with custom Themes and customization
 
 ![image](https://user-images.githubusercontent.com/65014926/195518123-b334a67c-288d-4620-96ed-c6b442107d1e.png)
 
@@ -16,7 +16,7 @@
 
 
 
-## To Read Docs Click Here : <a href = "https://github.com/Shubham996633/JoResume__Responsive__Resume__App/blob/main/JoResume%20Docs.md">JoResume Docs</a> 
+## To Read Docs Click Here : <a href = "https://github.com/Shubham996633/JoResume__Responsive__Resume__App/blob/main/assets/Docs/Docs.md">JoResume Docs</a> 
 
 
 
