@@ -1,5 +1,7 @@
 // =================Loader=====================
 
+
+
 onload = () => {
     const load =document.getElementById('load')
     setTimeout(() =>{
@@ -1710,7 +1712,7 @@ auth.onAuthStateChanged(user => {
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 4800,
+            timer: 5400,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -1741,15 +1743,19 @@ function logout() {
         showCancelButton: true,
         confirmButtonText: 'Save & Sign Out!',
         denyButtonText: `Don't save & Sign Out!`,
+        
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
+            popup('Taking to Home Page in a while')
             datasaver()
-
+            
+            
             Swal.fire(
                
-                'Data Saved & Signing off!',
-                ' ',
+                `Data Saved & Signing off! `,
+               
+                ` `,
                 'success'
               )
 
@@ -1777,7 +1783,6 @@ function logout() {
                 'info'
               )
               console.log('Data not saved and signing off')
-              alert('Data not saved and signing off')
             document.querySelector('.swal2-popup').style.background = '#1b1a1a'
             document.querySelector('.swal2-popup').style.color = 'white'
 
@@ -1787,6 +1792,8 @@ function logout() {
             auth.signOut();
 
             location = '../../../index.html'
+            popup('Taking to Home Page in a while')
+
 
         }, 963);
         }
@@ -2407,3 +2414,4 @@ function displayContent(){
 }
 
 displayContent()
+

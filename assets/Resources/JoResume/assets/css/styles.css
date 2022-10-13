@@ -835,8 +835,8 @@ button{
     width: 420px;
 }
 
-.app,
-.mobile{
+.app
+{
     display: none;
 }
 
@@ -1077,13 +1077,17 @@ button{
 
 }
 
-
+.scrolltop{
+    display: none;
+}
 
 @media screen and (max-width: 809px) {
     .mobile{
         display: block;
+        /* background: black; */
         /* overflow-x: hidden; */
     }
+    
     .icons-image{
         margin-top: -3rem;
     }
@@ -1106,8 +1110,10 @@ button{
 }
 
 
-@media screen and (min-width:810px) {
-    
+@media screen and (min-width:963px) {
+    .mobile{
+        display: none;
+    }
     .app{
         display: block;
     }
@@ -1389,4 +1395,19 @@ button{
 .dark-theme .home__title-show,
 .dark-theme .username{
     color: white;
+}
+
+@media screen and (min-width: 963px) {
+    .username{
+        font-size: 2rem;
+    }
+    
+}
+
+
+@media screen and (min-width: 1111px) {
+    .username{
+        font-size: 2.4rem;
+    }
+    
 }
