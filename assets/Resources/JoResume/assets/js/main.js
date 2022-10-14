@@ -845,7 +845,6 @@ function updater(){
 
 }   
 
-``
 var i = 1;
 function duplicate() {
     const totalContainer = document.querySelectorAll("#new__education")
@@ -943,7 +942,7 @@ function deleteEducation(){
         const totalEducation = document.querySelectorAll('#new__education')
          if(totalEducation.length === 0){
              document.querySelector('.delete__education').disabled = true
-         }else if(totalEducation.length > 0){
+         }else{
              let deleteItem = document.querySelector(`.new__education${totalEducation.length}`)
              deleteItem.parentNode.removeChild(deleteItem)
         }
@@ -2450,11 +2449,13 @@ window.onpopstate = function () {
 document.querySelectorAll('#addmore').forEach(button => {
     button.setAttribute('title', 'Add More')
     button.style.cursor = 'pointer'
+    button.click()
 })
 
 document.querySelectorAll('#delete').forEach(button => {
     button.setAttribute('title', 'Delete Last')
     button.style.cursor = 'pointer'
+    button.click()
 
 })
 
