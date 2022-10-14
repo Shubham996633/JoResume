@@ -659,3 +659,43 @@ cursor: pointer;
      
         
     }
+
+@media (min-width: 1500px){
+        .hero-content{
+                margin-left: -6rem;
+                margin-top: -12rem;
+        }
+        body{
+                zoom: 1.1;
+        }
+}
+
+
+@media (min-width: 2100px){
+        .hero-content{
+                margin-left: -9rem;
+                zoom: 1.2;
+        }
+       
+}
+
+@media (min-width: 2600px){
+        .hero-content{
+                margin-top: -60%;
+                left: -30%;
+                zoom: 1.2;
+        }
+       
+}
+
+
+@media (min-width: 3333px){
+        .hero-content{
+                margin-top: -90%;
+                left: -30%;
+                transform: scale(1.2);
+        }
+        body{
+                zoom: 1.2;
+        }
+}
